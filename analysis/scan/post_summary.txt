@@ -1,0 +1,17 @@
+============================================================
+POST-ANALYSIS  (per-residue decomposition + geometric stability)
+Wed Oct 21 21:58:07 CST 2026   PROD=20 ns each, igb=5 saltcon=0.150, 100 frames
+============================================================
+MUT        ligMinDist     protRMSD   decompΔG     
+                 (nm)         (nm)   (kcal/mol)    
+D141A                       1.5451   NA            
+D81A                        5.3431   NA            
+E194A                       1.8940   NA            
+E198A                       2.2211   NA            
+E202A                       1.7419   NA            
+E29A                        3.4906   NA            
+
+Notes: ligMinDist = mean over 100 frames of min(UB1..Protein) distance;
+       protRMSD   = mean all-atom Protein RMSD vs frame 0 (fold drift);
+       decompΔG   = ΔTOTAL from the decomposition run (should ≈ pipeline ΔG).
+POST-ANALYSIS COMPLETE Wed Oct 21 21:58:49 CST 2026

@@ -1,0 +1,12 @@
+# Large raw molecular-dynamics trajectories are NOT part of this Git repository.
+# They are archived separately (Zenodo; DOI to be issued on acceptance).
+*.xtc
+*.trr
+*.edr
+*.cpt
+*.tpr
+*.gro
+*.pdb
+*.pdbqt
+# keep npt.gro (small post-equilibration structure, needed by verify_rg.py) and input pdbs if added later
+!analysis/md/npt.gro
