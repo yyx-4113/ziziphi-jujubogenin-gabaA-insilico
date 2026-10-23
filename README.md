@@ -6,7 +6,7 @@
 
 ## What this repository contains
 
-This is a **computational-only** study. No animals, humans, tissues, or wet-lab measurements were used. The repository provides the full analysis code, input structures, and all derived products needed to reproduce every reported number. Raw all-atom MD trajectories are >1.5 GB, above the per-file size limit of the hosting platform, so they are not deposited here; the deposited code and derived products are sufficient to reproduce all reported values without the raw trajectories.
+This is a **computational-only** study. No animals, humans, tissues, or wet-lab measurements were used. The repository provides the full analysis code, input structures, and all derived products needed to reproduce every reported number. Raw all-atom MD trajectories are >1.5 GB, above the per-file size limit of the hosting platform, so they are not deposited here; the deposited code and derived products are sufficient to reproduce all reported values without the raw trajectories. A frozen copy of this repository is archived at Zenodo: 10.5281/zenodo.23602221 (https://doi.org/10.5281/zenodo.23602221).
 
 ```
 analysis/
