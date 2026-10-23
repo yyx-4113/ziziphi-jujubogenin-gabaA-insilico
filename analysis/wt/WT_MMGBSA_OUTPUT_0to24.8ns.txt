@@ -1,0 +1,118 @@
+Embedded MM-GBSA output recovered from `COMPACT_MMXSA_RESULTS_WT.mmxsa`
+=======================================================================
+
+Source
+------
+The gmx_MMPBSA "compact results" pickle `COMPACT_MMXSA_RESULTS_WT.mmxsa` stores the
+complete output text of the run in its `output_file` attribute. The run is:
+
+    Run on Mon Oct 19 08:15:01 2026
+    gmx_MMPBSA Version=1.6.5 based on MMPBSA.py v.16.0
+    Complex structure file :  ../md.tpr
+    Complex topology file  :  ../topol.top
+    Ligand structure file  :  ../JUB.acpype/JUB_bcc_gaff2.mol2   (GAFF2 / AM1-BCC, residue UB1)
+    Initial trajectory     :  COM_traj_0.xtc
+    Receptor mask ":1-671" ; Ligand mask ":672"
+    100 complex frames ; igb=5 ; saltcon=0.15 ; ff99SB + gaff ; no entropy term
+
+This is the run behind `mmpbsa_wt_100frames.dat` (identical values) and it is the
+artifact that anchors the wild-type 0-24.8 ns result quoted in manuscript section 3.3.
+
+Why this file matters for section 4.5
+-------------------------------------
+The decomposition settings recorded in the same pickle are
+
+    INPUT['decomp'] = {'decomprun': False, 'idecomp': 0, 'print_res': 'within 6'}
+
+so this run produced NO per-residue decomposition, and the 30-50 ns window run
+(the section 4.5 reference, -32.40 +- 1.73 kcal/mol) left no artifact at all.
+See `REGENERATE_WT_30to50ns.md` in this directory.
+
+Recovered energy table (verbatim, kcal/mol)
+-------------------------------------------
+
+GENERALIZED BORN:
+
+Complex:
+Energy Component       Average     SD(Prop.)         SD   SEM(Prop.)        SEM
+-------------------------------------------------------------------------------
+BOND                     71.96          0.92       0.92         0.09       0.09
+ANGLE                  5308.59         47.90      47.90         4.79       4.79
+DIHED                  6943.61         35.96      35.96         3.60       3.60
+VDWAALS               -5572.60         38.45      38.45         3.84       3.84
+EEL                  -45223.72        136.25     136.25        13.63      13.63
+1-4 VDW                2936.57         18.49      18.49         1.85       1.85
+1-4 EEL               24130.74         62.74      62.74         6.27       6.27
+EGB                   -6791.55        131.46     131.46        13.15      13.15
+ESURF                   241.66          2.90       2.90         0.29       0.29
+
+GGAS                 -11404.85        167.06     141.79        16.71      14.18
+GSOLV                 -6549.88        131.49     130.74        13.15      13.07
+
+TOTAL                -17954.73        212.60      66.11        21.26       6.61
+
+Receptor:
+Energy Component       Average     SD(Prop.)         SD   SEM(Prop.)        SEM
+-------------------------------------------------------------------------------
+BOND                     71.52          0.91       0.91         0.09       0.09
+ANGLE                  5249.06         47.36      47.36         4.74       4.74
+DIHED                  6908.24         35.82      35.82         3.58       3.58
+VDWAALS               -5529.28         37.76      37.76         3.78       3.78
+EEL                  -45276.84        136.81     136.81        13.68      13.68
+1-4 VDW                2908.43         18.55      18.55         1.86       1.86
+1-4 EEL               24261.54         62.67      62.67         6.27       6.27
+EGB                   -6804.22        132.10     132.10        13.21      13.21
+ESURF                   242.26          2.86       2.86         0.29       0.29
+
+GGAS                 -11407.33        167.16     142.65        16.72      14.27
+GSOLV                 -6561.96        132.13     131.32        13.21      13.13
+
+TOTAL                -17969.29        213.07      65.38        21.31       6.54
+
+Ligand:
+Energy Component       Average     SD(Prop.)         SD   SEM(Prop.)        SEM
+-------------------------------------------------------------------------------
+BOND                      0.44          0.07       0.07         0.01       0.01
+ANGLE                    59.53          4.61       4.61         0.46       0.46
+DIHED                    35.38          1.66       1.66         0.17       0.17
+VDWAALS                   3.79          2.80       2.80         0.28       0.28
+EEL                      63.49          0.83       0.83         0.08       0.08
+1-4 VDW                  28.13          1.33       1.33         0.13       0.13
+1-4 EEL                -130.80          0.92       0.92         0.09       0.09
+EGB                     -12.07          0.39       0.39         0.04       0.04
+ESURF                     4.72          0.02       0.02         0.00       0.00
+
+GGAS                     59.97          5.93       4.95         0.59       0.49
+GSOLV                    -7.35          0.39       0.39         0.04       0.04
+
+TOTAL                    52.62          5.94       4.93         0.59       0.49
+
+Delta (Complex - Receptor - Ligand):
+Energy Component       Average     SD(Prop.)         SD   SEM(Prop.)        SEM
+-------------------------------------------------------------------------------
+dBOND                     0.00          0.06       0.00         0.01       0.00
+dANGLE                   -0.00          4.07       0.00         0.41       0.00
+dDIHED                   -0.00          1.52       0.00         0.15       0.00
+dVDWAALS                -47.11          2.11       3.63         0.21       0.36
+dEEL                    -10.37          0.28       3.83         0.03       0.38
+d1-4 VDW                 -0.00          1.28       0.00         0.13       0.00
+d1-4 EEL                  0.00          0.85       0.00         0.09       0.00
+dEGB                     24.74          0.25       3.30         0.02       0.33
+dESURF                   -5.31          0.02       0.35         0.00       0.03
+
+dGGAS                   -57.48          2.12       5.94         0.21       0.59
+dGSOLV                   19.42          0.25       3.18         0.03       0.32
+
+dTOTAL                  -38.06          2.14       4.04         0.21       0.40
+
+Window dependence (a reportable limitation)
+-------------------------------------------
+The same wild-type trajectory, evaluated over different 100-frame windows, gives
+
+    0-24.8 ns : dTOTAL = -38.06 +- 2.14 kcal/mol   (this artifact)
+    30-50  ns : dTOTAL = -32.40 +- 1.73 kcal/mol   (pipeline log only)
+
+a 5.66 kcal/mol spread. Because the wild-type reference enters every ddG in the
+alanine scan as an additive constant, this spread shifts all six ddG together and
+leaves their ranking and signs unchanged; it nevertheless bounds how quantitatively
+any single ddG may be read.
