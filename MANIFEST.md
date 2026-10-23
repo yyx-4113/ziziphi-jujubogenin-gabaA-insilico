@@ -1,13 +1,13 @@
 # MANIFEST - ziziphi-jujubogenin-gabaA-insilico
 
-All files are SHA-256 verified. Raw MD trajectories are excluded (archived separately, see README).
+All files are SHA-256 verified. Raw MD trajectories (>1.5 GB) are excluded because they exceed the platform's per-file size limit; see README.
 
 | File | SHA-256 | Bytes |
 |---|---|---|
 | .gitignore | e8d46d4a64e63eee762d4aab707a5ca311424ecc238e1748418f81427bd207eb | 640 |
 | CITATION.cff | 4eb64cb9baf60ad2a45465469f305bfdae1329e530476b2e5871fd8f13479485 | 1145 |
 | LICENSE | 7b36f471cfb9e7c7c6611b00426888737e0cb9b845e48897d8ced9c1b15243f4 | 1069 |
-| README.md | c6dfbbc5a170ee84f04c01085e31704ea893489d2507e8ee4c5bc5d43a57e1c3 | 6314 |
+| README.md | 24d5bcb479e7c2d069cf10e87ff1c83312fcb652fa5b47bc24416224ae303a5e | 6878 |
 | analysis/docking/box_center.txt | 34475159e00b2e230ac5cda2eaddf4c29bfabdd42bfb682cb99427f178ff4b73 | 22 |
 | analysis/docking/docking_results.md | 80f6bae123c7fadc877cf81f6bec1b5ac9fa73a919a3cbe6428c6ea1c6c0d635 | 6872 |
 | analysis/docking/flum_BZ.pdbqt | b41f4b5f81cc2f797baf70ee4b2b3cff8e7cc93afb0a2bff639451f193b9fc5b | 50775 |
@@ -51,10 +51,12 @@ All files are SHA-256 verified. Raw MD trajectories are excluded (archived separ
 | figures/Fig2_md_stability.svg | e629e3a69c8c2595bb45e724e5593f04bb22f9e596681cbcb17ce4987c8b11bb | 89494 |
 | figures/Fig3_alanine_scan.png | 747ff50e1a3537d5664ee2c81977261b6f71eff839ba6d3fcfe589173c09e963 | 141573 |
 | figures/Fig3_alanine_scan.svg | 997cbc9300d84be08d9fc2de6c404d549a0c67426995b31a2192c26bf77083ca | 80932 |
-| manuscript/manuscript.docx | dc9207cb7754d055a45aef41f3ef651e5e0f0a1b9678a8d9cecdc86a731d0d5a | 1762384 |
-| manuscript/manuscript.md | 481e6693132e7100edbdde792cb40929a94550ed9f02678f82cb2866ee081b79 | 47844 |
-| manuscript/manuscript_ZSS_insilico_v3.0.md | 481e6693132e7100edbdde792cb40929a94550ed9f02678f82cb2866ee081b79 | 47844 |
+| manuscript/manuscript.docx | 9af17516289d9afeaead5d49ae07676907af02c45aa922abe6c768ae86659fe4 | 1762712 |
+| manuscript/manuscript.md | 72e399794ef9deba3384d489d31a4582181ec8be68958729d2245218de178f8e | 48771 |
+| manuscript/manuscript_ZSS_insilico_v3.0.md | 72e399794ef9deba3384d489d31a4582181ec8be68958729d2245218de178f8e | 48771 |
 | scripts/make_fig1_v2.py | 4dc3b913e02c214563a182ae76eb2e01d985c63556e66f2c35712303602d7030 | 7333 |
 | scripts/make_figures.py | f6d01e8d74f0ac7555ecc192a7b8dd24a1f0b7300392e6c6a7fddd31e566e9fe | 7095 |
 | scripts/md2docx.py | ed8d3b65538354d49888a1ff88cedf50f3ac631f839f753ec659d09199452e51 | 9016 |
 | scripts/verify_rg.py | 60e39f39228883f47114b213538a07632a7668ffa31cdc4aac3b2caa8bab6743 | 3753 |
+
+This manifest does not list itself. Verify with `sha256sum` over the rows above.

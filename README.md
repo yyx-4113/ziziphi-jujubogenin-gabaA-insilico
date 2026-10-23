@@ -6,7 +6,7 @@
 
 ## What this repository contains
 
-This is a **computational-only** study. No animals, humans, tissues, or wet-lab measurements were used. The repository provides the full analysis code, input structures, and all derived products needed to reproduce every reported number. Raw all-atom MD trajectories are >1.5 GB and are archived separately (Zenodo; DOI to be issued on acceptance); the deposited code + derived products are sufficient to reproduce all values without the raw trajectories.
+This is a **computational-only** study. No animals, humans, tissues, or wet-lab measurements were used. The repository provides the full analysis code, input structures, and all derived products needed to reproduce every reported number. Raw all-atom MD trajectories are >1.5 GB, above the per-file size limit of the hosting platform, so they are not deposited here; the deposited code and derived products are sufficient to reproduce all reported values without the raw trajectories.
 
 ```
 analysis/
@@ -19,7 +19,10 @@ analysis/
              cross-map matrices (crossmap_*.csv),
              allmode/decomp_<MUT>.dat  (6 × 9.6 MB, complete per-residue MM-GBSA decompositions,
                                         100 frames × 672 residues × 4 sections),
-             verify_ddg_from_decomp.py (reproduces the six ΔG values from those files)
+             verify_ddg_from_decomp.py (reproduces the six ΔG values from those files),
+             verify_bz_separation.py (reproduces the §3.1 contact-set / BZ-set separation
+                                     geometry from structures/6X3Z.pdb: 11.0 Å closest Cα–Cα,
+                                     all 25 contacts beyond 12 Å of the BZ-site centroid)
   wt/        0–24.8 ns wild-type MM-GBSA output (mmpbsa_wt_100frames.dat), the recovered output text
              (WT_MMGBSA_OUTPUT_0to24.8ns.txt), and the 30–50 ns regeneration recipe; see wt/README.md
 figures/     Fig. 1–3 (PNG + SVG) and their generation scripts
@@ -60,7 +63,7 @@ disclosed in the manuscript as a limitation of single-trajectory MM-GBSA on 100 
 
 ## Important provenance note (WT 30–50 ns MM-GBSA)
 
-The wild-type MM-GBSA reference used for the alanine-scan ΔΔG values (ΔG = −32.40 ± 1.73 kcal/mol) was computed over the continued WT trajectory's **30–50 ns window** (input `wt_30to50ns_200ps.xtc`, 100 frames). Its dedicated output (`mmpbsa_wt_30to50ns.dat`) is being regenerated on the compute host and will be committed to this repository **before submission**; see `analysis/wt/README.md`. The already-deposited 0–24.8 ns WT output (`mmpbsa_wt_100frames.dat`, ΔG = −38.06 ± 2.14) underlies §3.3.
+The wild-type MM-GBSA reference used for the alanine-scan ΔΔG values (ΔG = −32.40 ± 1.73 kcal/mol) was computed over the continued WT trajectory's **30–50 ns window** (input `wt_30to50ns_200ps.xtc`, 100 frames). Its dedicated output (`mmpbsa_wt_30to50ns.dat`) is not among the retained artifacts and the original compute host is no longer reachable; the input trajectory is retained and the verbatim regeneration recipe with its mandatory control run is committed at `analysis/wt/REGENERATE_WT_30to50ns.md`, so the value is re-derivable on any Linux host but is currently documented only in the archived pipeline log. See `analysis/wt/README.md`. The already-deposited 0–24.8 ns WT output (`mmpbsa_wt_100frames.dat`, ΔG = −38.06 ± 2.14) underlies §3.3.
 
 ## Caveats (shared with the manuscript)
 
