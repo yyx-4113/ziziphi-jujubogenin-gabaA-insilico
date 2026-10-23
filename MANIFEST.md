@@ -29,7 +29,8 @@ All files are SHA-256 verified. Raw MD trajectories are excluded (archived separ
 | analysis/scan/mut_ddg_replica_results.txt | d5ba342a85f7921181f3922bea4bb8208d755e91ec341f488aa936410adda771 | 2188 |
 | analysis/scan/mut_ddg_results.txt | 5f96461fc0057b1306b813e29435d6e10c31d8a882d7cbdd7e50df3b0d5c2945 | 2935 |
 | analysis/scan/post_summary.txt | 7da8248ca3da28a350dfd575b94a63c37533e4c558161e42ed61ad2f0de3fe2f | 963 |
-| analysis/wt/README.md | adb05f6e409d411480378fcf5031dcad2248fb969b99f7d8b7a0e6175cfa8c5d | 996 |
+| analysis/wt/README.md | 461da903563c5464f356fd94c778a586769682ea7243d214e13ce49a9e34d4c6 | 1252 |
+| analysis/wt/REGENERATE_WT_30to50ns.md | bb759815d60e34db8166f65bda3cbb8142fb355b228cfc83d1574ae0d8e871fa | 7411 |
 | analysis/wt/mmpbsa_wt_100frames.dat | cc68045389e0e4961bcc33a9701a9cc72dc66d1ffef1d724165e78ff6a73c835 | 6585 |
 | figures/Fig1_poses.png | 616847b70f8b6a994f57185e39510eefa3aacf2f2188601e508e9204181e93e0 | 1121643 |
 | figures/Fig1_poses.svg | 8ecafb5684604982fd3d059f5b9807520ae0c0d464aeac1746f8bb79675d9f33 | 335849 |
@@ -37,9 +38,9 @@ All files are SHA-256 verified. Raw MD trajectories are excluded (archived separ
 | figures/Fig2_md_stability.svg | e629e3a69c8c2595bb45e724e5593f04bb22f9e596681cbcb17ce4987c8b11bb | 89494 |
 | figures/Fig3_alanine_scan.png | 747ff50e1a3537d5664ee2c81977261b6f71eff839ba6d3fcfe589173c09e963 | 141573 |
 | figures/Fig3_alanine_scan.svg | 997cbc9300d84be08d9fc2de6c404d549a0c67426995b31a2192c26bf77083ca | 80932 |
-| manuscript/manuscript.docx | f72fa0c87ec750de3a00f900264fefb6821127bf908d508b5e3736c664047432 | 1761701 |
-| manuscript/manuscript.md | 17f71d3cf3fd1881a3d135417ddfa3f20de47d236ee20b2eb6522754359b5a92 | 46158 |
-| manuscript/manuscript_ZSS_insilico_v3.0.md | 17f71d3cf3fd1881a3d135417ddfa3f20de47d236ee20b2eb6522754359b5a92 | 46158 |
+| manuscript/manuscript.docx | 664f7461b29aa596a01ae7579111ed2aab8075b5e6db59cb54199fb32af3ec76 | 1761843 |
+| manuscript/manuscript.md | 4ee13be8e0ac7680a8caf5a04500ceb0915f1651104bf6eabd67889adf3cc9db | 46603 |
+| manuscript/manuscript_ZSS_insilico_v3.0.md | 4ee13be8e0ac7680a8caf5a04500ceb0915f1651104bf6eabd67889adf3cc9db | 46603 |
 | scripts/make_fig1_v2.py | 4dc3b913e02c214563a182ae76eb2e01d985c63556e66f2c35712303602d7030 | 7333 |
 | scripts/make_figures.py | f6d01e8d74f0ac7555ecc192a7b8dd24a1f0b7300392e6c6a7fddd31e566e9fe | 7095 |
 | scripts/md2docx.py | ed8d3b65538354d49888a1ff88cedf50f3ac631f839f753ec659d09199452e51 | 9016 |
