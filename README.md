@@ -19,11 +19,19 @@ analysis/
              cross-map matrices (crossmap_*.csv),
              allmode/decomp_<MUT>.dat  (6 × 9.6 MB, complete per-residue MM-GBSA decompositions,
                                         100 frames × 672 residues × 4 sections),
-             verify_ddg_from_decomp.py (reproduces the six ΔG values from those files),
+             rep1/mmpbsa_<MUT>.dat     (6 × gmx_MMPBSA output, the six first-replica ΔG),
+             rep2/mmpbsa_<MUT>_rep2.dat + gmx_MMPBSA_<MUT>_rep2.log
+                                       (2 × independently seeded second replicas, D141A and E194A),
+             verify_all_dG_outputs.py  (recomputes EVERY ΔG and ΔΔG of §4.5 / Fig. 3 from
+                                        wt/, rep1/ and rep2/ — the single entry point),
+             verify_ddg_from_decomp.py (reproduces the six ΔG values from allmode/),
+             verify_block_replicate.py (auxiliary: half- and quarter-trajectory block
+                                        agreement within each deposited run),
              verify_bz_separation.py (reproduces the §3.1 contact-set / BZ-set separation
                                      geometry from structures/6X3Z.pdb: 11.0 Å closest Cα–Cα,
                                      all 25 contacts beyond 12 Å of the BZ-site centroid)
-  wt/        0–24.8 ns wild-type MM-GBSA output (mmpbsa_wt_100frames.dat), the recovered output text
+  wt/        0–24.8 ns wild-type MM-GBSA output (mmpbsa_wt_100frames.dat), the 30–50 ns output
+             (mmpbsa_wt_matched_30to50ns.dat), the recovered 0–24.8 ns output text
              (WT_MMGBSA_OUTPUT_0to24.8ns.txt), and the 30–50 ns regeneration recipe; see wt/README.md
 figures/     Fig. 1–3 (PNG + SVG) and their generation scripts
 scripts/     md2docx.py (manuscript → DOCX), verify_rg.py (protein radius of gyration), figure-generation scripts
@@ -35,8 +43,13 @@ manuscript/  manuscript_ZSS_insilico_v3.0.md (source), manuscript.md (submission
 1. **Docking** (AutoDock Vina 1.2.7): see `analysis/docking/` logs. The BZ-corrected box is centred on [81.46, 119.93, 120.91] (20 Å); the exploratory mis-centred box is centred on [97.518, 105.844, 123.021] (22 Å).
 2. **MD** (GROMACS 2024.5, amber99sb-ildn, GAFF2/AM1-BCC ligand): `analysis/md/` holds the derived metrics; `verify_rg.py` recomputes the protein-alone radius of gyration from `npt.gro` (3.46 nm).
 3. **MM-GBSA** (gmx_MMPBSA 1.6.5, igb=5, saltcon 0.150 M, 100 frames, no entropy term) and **energy-group** interaction energies: `analysis/md/`.
-4. **Alanine scan** (six 20 ns mutant re-simulations): `analysis/scan/`. The six ΔG values are
-   **re-derivable from the deposited decompositions**: run
+4. **Alanine scan** (six 20 ns mutant re-simulations plus two independently seeded second
+   replicas, D141A and E194A): `analysis/scan/`. Run
+   `python3 analysis/scan/verify_all_dG_outputs.py`, which reads the retained gmx_MMPBSA
+   outputs in `analysis/wt/`, `analysis/scan/rep1/` and `analysis/scan/rep2/` and
+   recomputes all nine binding free energies, all six ΔΔG values, both replica ΔΔG values
+   and both wild-type windows, reproducing every tabulated value exactly. The six ΔG values
+   are also **re-derivable from the deposited decompositions**: run
    `python3 analysis/scan/verify_ddg_from_decomp.py`, which sums the `DELTAS:` section of each
    `allmode/decomp_<MUT>.dat` file per frame and reproduces the tabulated ΔG to within
    1.06 kcal/mol (RMS 0.75, Pearson r = 0.999820, ranking identical). The file layout is:
@@ -50,20 +63,38 @@ manuscript/  manuscript_ZSS_insilico_v3.0.md (source), manuscript.md (submission
 
 | Quantity | Status |
 |---|---|
-| Six mutant ΔG (D141A … E29A) | **artifact-backed** — reproducible from `analysis/scan/allmode/decomp_<MUT>.dat` (`DELTAS:` section), RMS 0.75 kcal/mol vs the pipeline log |
-| WT reference ΔG −32.40 ± 1.73 (30–50 ns window) | **pipeline log only** — the dedicated MM-GBSA output was never pulled back from the compute host. Regeneration recipe: `analysis/wt/REGENERATE_WT_30to50ns.md` |
-| WT ΔG −38.06 ± 2.14 (0–24.8 ns window) | **artifact-backed** — `analysis/wt/mmpbsa_wt_100frames.dat` and the recovered output text `analysis/wt/WT_MMGBSA_OUTPUT_0to24.8ns.txt` |
-| Two replica ΔΔG (+21.78, +7.85) | **pipeline log only** — no replica decomposition was archived and the replica trajectories were not retained |
+| Six mutant ΔG (D141A … E29A) | **artifact-backed** — `analysis/scan/rep1/mmpbsa_<MUT>.dat` (gmx_MMPBSA output of the 20 ns re-simulation of each mutant); independently reproducible from `analysis/scan/allmode/decomp_<MUT>.dat` (`DELTAS:` section), RMS 0.75 kcal/mol vs the pipeline log |
+| Two independently seeded replica ΔG (D141A, E194A) | **artifact-backed** — `analysis/scan/rep2/mmpbsa_<MUT>_rep2.dat`, with `gmx_MMPBSA_<MUT>_rep2.log` recording the command line, the trajectory (`md_<MUT>_rep2_img.xtc`) and the 100 processed frames |
+| WT ΔG −38.06 ± 2.14 (0–24.8 ns window) — the scan reference | **artifact-backed** — `analysis/wt/mmpbsa_wt_100frames.dat` and the recovered output text `analysis/wt/WT_MMGBSA_OUTPUT_0to24.8ns.txt` |
+| WT ΔG −32.40 ± 1.73 (30–50 ns window) — convergence / window-sensitivity check | **artifact-backed** — `analysis/wt/mmpbsa_wt_matched_30to50ns.dat` (gmx_MMPBSA, 100 complex frames); input trajectory and verbatim regeneration recipe retained as an independent cross-check |
 
-Because the WT reference enters every ΔΔG as an additive constant, the ΔΔG **ranking and signs
-are invariant** to the missing WT artifact: against the artifact-backed −38.06 the ΔΔG become
-+12.92 / +24.46 / +34.97 / +32.78 / +22.63 / +21.72 with the ordering unchanged. The WT value is
-window-dependent (−38.06 at 0–24.8 ns vs −32.40 at 30–50 ns, a 5.66 kcal/mol spread), which is
-disclosed in the manuscript as a limitation of single-trajectory MM-GBSA on 100 frames.
+Every number in the §4.5 table and in Fig. 3 is therefore recomputed from a retained output by
+`analysis/scan/verify_all_dG_outputs.py`; none depends on a pipeline log.
 
-## Important provenance note (WT 30–50 ns MM-GBSA)
+**Provenance of the recovered outputs (2026-10-24).** The mutant, replica and 30–50 ns wild-type
+outputs above were recovered from a local 5.0 GB tar archive of the remote working tree
+(`zss_md_remote_20261023.tar`, 1022 members, packed 2026-10-23 12:04) that had not been examined
+when the earlier "log-only" verdicts were written. Their identity is established by the
+gmx_MMPBSA headers (run time, structure file, 100 complex frames) and by exact agreement with the
+archived pipeline log to both quoted digits (mean and SD). The earlier verdicts for these three
+items are retracted; the retained-artifact status above supersedes them.
 
-The wild-type MM-GBSA reference used for the alanine-scan ΔΔG values (ΔG = −32.40 ± 1.73 kcal/mol) was computed over the continued WT trajectory's **30–50 ns window** (input `wt_30to50ns_200ps.xtc`, 100 frames). Its dedicated output (`mmpbsa_wt_30to50ns.dat`) is not among the retained artifacts and the original compute host is no longer reachable; the input trajectory is retained and the verbatim regeneration recipe with its mandatory control run is committed at `analysis/wt/REGENERATE_WT_30to50ns.md`, so the value is re-derivable on any Linux host but is currently documented only in the archived pipeline log. See `analysis/wt/README.md`. The already-deposited 0–24.8 ns WT output (`mmpbsa_wt_100frames.dat`, ΔG = −38.06 ± 2.14) underlies §3.3.
+The WT value remains window-dependent (−38.06 at 0–24.8 ns vs −32.40 at 30–50 ns, a 5.66 kcal/mol
+spread), which is disclosed in the manuscript as a limitation of single-trajectory MM-GBSA on 100
+frames. Because the reference enters every ΔΔG as an additive constant, re-referencing the scan to
+the 30–50 ns window shifts all six values by the same +5.66 kcal/mol and leaves the ranking and
+every conclusion unchanged.
+
+## Provenance note (WT 30–50 ns MM-GBSA)
+
+The 30–50 ns wild-type value (ΔG = −32.40 ± 1.73 kcal/mol) was computed over the continued WT
+trajectory's **30–50 ns window** (input `wt_30to50ns_200ps.xtc`, 100 frames; structure file
+`/root/wt_rebuild/md_ref.tpr`, run 2026-10-20 07:57:57). Its output is retained here as
+`analysis/wt/mmpbsa_wt_matched_30to50ns.dat`. The verbatim original command line, the input hashes,
+the ligand-topology rebuild step, and a control run that reproduces the deposited 0–24.8 ns result
+(−38.06 ± 2.14) are committed at `analysis/wt/REGENERATE_WT_30to50ns.md` as an independent
+cross-check. The already-deposited 0–24.8 ns WT output (`mmpbsa_wt_100frames.dat`,
+ΔG = −38.06 ± 2.14) underlies §3.3 and supplies the scan reference.
 
 ## Caveats (shared with the manuscript)
 

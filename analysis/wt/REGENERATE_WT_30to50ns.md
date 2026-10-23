@@ -1,12 +1,15 @@
 # Regenerating the 30–50 ns wild-type MM-GBSA reference
 
-**Status (2026-10-23): the output file is still missing.** The value it should contain,
-ΔG<sub>WT</sub> = −32.40 ± 1.73 kcal/mol, is recorded in the archived pipeline log
+**Status (updated 2026-10-24): the output file has been recovered and is deposited at
+`analysis/wt/mmpbsa_wt_matched_30to50ns.dat`.** It was found in a local 5.0 GB tar archive of the
+remote working tree (`zss_md_remote_20261023.tar`, packed 2026-10-23 12:04), where it sits at
+`_mmpbsa_r3/mmpbsa_wt_matched.dat`; its header (run 2026-10-20 07:57:57, structure file
+`/root/wt_rebuild/md_ref.tpr`, 100 complex frames) and its ΔTOTAL
+(ΔG<sub>WT</sub> = −32.40 ± 1.73 kcal/mol) match the archived pipeline log
 (`analysis/scan/mut_ddg_results.txt`, line 3: "WT reference ΔG = -32.40 ± 1.73 kcal/mol
-(recomputed, matched 30-50ns window)", timestamped Tue Oct 20 04:46:54 CST 2026), but the
-primary gmx_MMPBSA `.dat` for that run was never pulled back from the compute host.
-This document is the exact recipe to reproduce it, so that the number becomes
-artifact-backed rather than log-documented.
+(recomputed, matched 30-50ns window)") to both quoted digits.
+This document is retained as the exact recipe to reproduce it independently, so that the number
+can be confirmed rather than merely transcribed.
 
 Everything needed is either archived here or archived in the author's project directory
 (`data/wt_100ns/`, `docking/md_autodl/`). No new science is required — only one MM-GBSA

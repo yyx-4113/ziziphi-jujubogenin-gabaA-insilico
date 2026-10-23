@@ -1,0 +1,6 @@
+&general
+startframe=1, endframe=100, interval=1, verbose=2, keep_files=0, gmx_path=/opt/gmx/bin,
+/
+&gb
+igb=5, saltcon=0.150,
+/

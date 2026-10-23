@@ -104,22 +104,35 @@ print("Fig2 done.")
 # =========================================================================
 ddg = {}   # name -> (ddg, sd, group)
 rep = {}   # name -> (ddg, sd)
-txt = open(os.path.join(ROOT, "data", "mut_ddg", "mut_ddg_results.txt")).read()
 # WT reference for the scan. The manuscript's Table uses the 0-24.8 ns value
 # (-38.06 +/- 2.14 kcal/mol), which is backed by the deposited
-# analysis/wt/mmpbsa_wt_100frames.dat. The 30-50 ns value (-32.40 +/- 1.73)
-# recorded in the pipeline log is reported in the text as a window-dependence
-# check only. Delta-delta-G is therefore recomputed here from each mutant's
-# own Delta-G rather than read from the log's pre-computed column, so the
-# figure cannot silently keep a stale reference.
+# analysis/wt/mmpbsa_wt_100frames.dat. The 30-50 ns value (-32.40 +/- 1.73) has
+# its own deposited output, analysis/wt/mmpbsa_wt_matched_30to50ns.dat, and is
+# reported in the text as a window-dependence check only.
 WT_REF, WT_SD = -38.06, 2.14
-for m in re.finditer(r"\[(\w+)\]\s*ΔG = ([-\d.]+) ± ([\d.]+)", txt):
-    name, dg, sd = m.group(1), float(m.group(2)), float(m.group(3))
+# Every mutant and replica Delta-G is read from its own retained gmx_MMPBSA
+# output rather than from the pipeline log, so the figure cannot silently keep
+# a stale reference or a stale value.
+SCAN = os.path.join(ROOT, "ziziphi-jujubogenin-gabaA-insilico", "analysis", "scan")
+
+
+def _read_dg(path):
+    """(dG, SD(Prop.)) from a gmx_MMPBSA output's Delta block."""
+    with open(path, encoding="utf-8", errors="replace") as fh:
+        for line in fh:
+            g = re.match(r"^ΔTOTAL\s+(-?\d+\.\d+)\s+(-?\d+\.\d+)", line)
+            if g:
+                return float(g.group(1)), float(g.group(2))
+    raise SystemExit("no DELTA TOTAL block in %s" % path)
+
+
+for name in ("D141A", "D81A", "E194A", "E198A", "E202A", "E29A"):
+    dg, sd = _read_dg(os.path.join(SCAN, "rep1", "mmpbsa_%s.dat" % name))
     grp = "contact" if name in ("D141A", "E194A", "E198A", "E202A") else "control"
     ddg[name] = (dg - WT_REF, sd, grp)
-rtxt = open(os.path.join(ROOT, "data", "mut_ddg", "mut_ddg_replica_results.txt")).read()
-for m in re.finditer(r"\[(\w+)\]\s*rep2 ΔG = ([-\d.]+) ± ([\d.]+)", rtxt):
-    rep[m.group(1)] = (float(m.group(2)) - WT_REF, float(m.group(3)))
+for name in ("D141A", "E194A"):
+    dg, sd = _read_dg(os.path.join(SCAN, "rep2", "mmpbsa_%s_rep2.dat" % name))
+    rep[name] = (dg - WT_REF, float(np.sqrt(sd ** 2 + WT_SD ** 2)))
 
 order = ["D141A", "D81A", "E194A", "E198A", "E202A", "E29A"]
 labels, vals, errs, cols = [], [], [], []
@@ -143,9 +156,11 @@ ax.axhline(0, c="black", lw=0.8)
 # overlay replica points
 for i, n in enumerate(order):
     if n in rep:
-        ax.scatter(i, rep[n][0], color="black", marker="D", s=28, zorder=5)
-        ax.annotate(f"rep2 {rep[n][0]:.1f}", (i, rep[n][0]),
-                    textcoords="offset points", xytext=(0, 8), fontsize=7, ha="center")
+        v, e = rep[n]
+        ax.errorbar(i, v, yerr=e, color="black", fmt="D", markersize=6,
+                    capsize=3, lw=1.0, zorder=5)
+        ax.annotate(f"rep2 {v:.1f} ± {e:.1f}", (i, v),
+                    textcoords="offset points", xytext=(0, 10), fontsize=7, ha="center")
 ax.set_xticks(x); ax.set_xticklabels(labels, fontsize=8)
 ax.set_ylabel("ΔΔG vs WT (kcal/mol)")
 ax.set_title("In-silico alanine scan of cavity hotspots (WT ΔG = -38.06 ± 2.14 kcal/mol)\n"
