@@ -5,7 +5,7 @@ All files are SHA-256 verified. Raw MD trajectories (>1.5 GB) are excluded becau
 | File | SHA-256 | Bytes |
 |---|---|---|
 | .gitignore | e8d46d4a64e63eee762d4aab707a5ca311424ecc238e1748418f81427bd207eb | 640 |
-| CITATION.cff | 3a99e6599b8e907c4a84ef8b3bf3bb2821c5ce003e45199bbcf64b85beb04e9f | 1189 |
+| CITATION.cff | dbee2f2b9c12269613b46bfdb612fe7154cbaddc21c80b4390391b4a1e99914f | 1189 |
 | LICENSE | 7b36f471cfb9e7c7c6611b00426888737e0cb9b845e48897d8ced9c1b15243f4 | 1069 |
 | README.md | f6b6f125709f5a5265f99b1e76b7188073acafb8b1ea216755a8f439ef371c69 | 7001 |
 | analysis/docking/box_center.txt | 34475159e00b2e230ac5cda2eaddf4c29bfabdd42bfb682cb99427f178ff4b73 | 22 |
@@ -52,9 +52,9 @@ All files are SHA-256 verified. Raw MD trajectories (>1.5 GB) are excluded becau
 | figures/Fig2_md_stability.svg | e629e3a69c8c2595bb45e724e5593f04bb22f9e596681cbcb17ce4987c8b11bb | 89494 |
 | figures/Fig3_alanine_scan.png | 0c1db17980825f4364eeeb150248b43612881d3552cba55247533d775b38e490 | 139203 |
 | figures/Fig3_alanine_scan.svg | 90907dda34efb8cc808a5cae4913d7acbbd752ae0c273aeac5feee1b737bbd27 | 80345 |
-| manuscript/manuscript.docx | e2b0fc9715667b8d7781fe24aac7eff4624b4d1d5b4eee65bd9757d51feca02f | 1759907 |
-| manuscript/manuscript.md | 53aa9f8eabe2ca33489f55f81fe6b5f4b51323df80f3e4421ae48a6a9c5e0f50 | 49829 |
-| manuscript/manuscript_ZSS_insilico_v3.0.md | 53aa9f8eabe2ca33489f55f81fe6b5f4b51323df80f3e4421ae48a6a9c5e0f50 | 49829 |
+| manuscript/manuscript.docx | 0a6ddb88068d4155c4b25619bdb9f5fc5ed47df35de12b610187160ab1abe21f | 1759907 |
+| manuscript/manuscript.md | ce3434f59d238516cccca0574f05ffb4e6416ef3f9bdebc7006dbcefe9750471 | 49829 |
+| manuscript/manuscript_ZSS_insilico_v3.0.md | ce3434f59d238516cccca0574f05ffb4e6416ef3f9bdebc7006dbcefe9750471 | 49829 |
 | scripts/make_fig1_v2.py | 4dc3b913e02c214563a182ae76eb2e01d985c63556e66f2c35712303602d7030 | 7333 |
 | scripts/make_figures.py | c4a4687b5f8cf82e20815f9cebc9fa9da7691e98a56365ccd0f97cc5e3386d15 | 7462 |
 | scripts/md2docx.py | ed8d3b65538354d49888a1ff88cedf50f3ac631f839f753ec659d09199452e51 | 9016 |
