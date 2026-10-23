@@ -50,13 +50,13 @@ All files are SHA-256 verified. Raw MD trajectories (>1.5 GB) are excluded becau
 | figures/Fig1_poses.svg | 8ecafb5684604982fd3d059f5b9807520ae0c0d464aeac1746f8bb79675d9f33 | 335849 |
 | figures/Fig2_md_stability.png | 453adc6e4937fcad45a65d13ca1fb76acfae467b393324d2263c2758cadd2fc6 | 501463 |
 | figures/Fig2_md_stability.svg | e629e3a69c8c2595bb45e724e5593f04bb22f9e596681cbcb17ce4987c8b11bb | 89494 |
-| figures/Fig3_alanine_scan.png | 747ff50e1a3537d5664ee2c81977261b6f71eff839ba6d3fcfe589173c09e963 | 141573 |
-| figures/Fig3_alanine_scan.svg | 997cbc9300d84be08d9fc2de6c404d549a0c67426995b31a2192c26bf77083ca | 80932 |
-| manuscript/manuscript.docx | 5732a004bfea7ca72440af2e8b2d96e66b0ff0f908f59577b8177c981e2dc361 | 1762788 |
-| manuscript/manuscript.md | 783fa64e06cccb5d66bda6532793aabce84e0d77dd5dd79a97e55a2463ad2d0e | 48940 |
-| manuscript/manuscript_ZSS_insilico_v3.0.md | 783fa64e06cccb5d66bda6532793aabce84e0d77dd5dd79a97e55a2463ad2d0e | 48940 |
+| figures/Fig3_alanine_scan.png | 0c1db17980825f4364eeeb150248b43612881d3552cba55247533d775b38e490 | 139203 |
+| figures/Fig3_alanine_scan.svg | 90907dda34efb8cc808a5cae4913d7acbbd752ae0c273aeac5feee1b737bbd27 | 80345 |
+| manuscript/manuscript.docx | e2b0fc9715667b8d7781fe24aac7eff4624b4d1d5b4eee65bd9757d51feca02f | 1759907 |
+| manuscript/manuscript.md | 53aa9f8eabe2ca33489f55f81fe6b5f4b51323df80f3e4421ae48a6a9c5e0f50 | 49829 |
+| manuscript/manuscript_ZSS_insilico_v3.0.md | 53aa9f8eabe2ca33489f55f81fe6b5f4b51323df80f3e4421ae48a6a9c5e0f50 | 49829 |
 | scripts/make_fig1_v2.py | 4dc3b913e02c214563a182ae76eb2e01d985c63556e66f2c35712303602d7030 | 7333 |
-| scripts/make_figures.py | f6d01e8d74f0ac7555ecc192a7b8dd24a1f0b7300392e6c6a7fddd31e566e9fe | 7095 |
+| scripts/make_figures.py | c4a4687b5f8cf82e20815f9cebc9fa9da7691e98a56365ccd0f97cc5e3386d15 | 7462 |
 | scripts/md2docx.py | ed8d3b65538354d49888a1ff88cedf50f3ac631f839f753ec659d09199452e51 | 9016 |
 | scripts/verify_rg.py | 60e39f39228883f47114b213538a07632a7668ffa31cdc4aac3b2caa8bab6743 | 3753 |
 

@@ -105,17 +105,21 @@ print("Fig2 done.")
 ddg = {}   # name -> (ddg, sd, group)
 rep = {}   # name -> (ddg, sd)
 txt = open(os.path.join(ROOT, "data", "mut_ddg", "mut_ddg_results.txt")).read()
-wt_sd = 1.73
-m = re.search(r"WT reference ΔG = ([-\d.]+) ± ([\d.]+)", txt)
-if m:
-    wt_sd = float(m.group(2))
-for m in re.finditer(r"\[(\w+)\]\s*ΔG = ([-\d.]+) ± ([\d.]+).*?ΔΔG = ([\d.]+)", txt):
-    name, dg, sd, ddg_v = m.group(1), m.group(2), m.group(3), m.group(4)
+# WT reference for the scan. The manuscript's Table uses the 0-24.8 ns value
+# (-38.06 +/- 2.14 kcal/mol), which is backed by the deposited
+# analysis/wt/mmpbsa_wt_100frames.dat. The 30-50 ns value (-32.40 +/- 1.73)
+# recorded in the pipeline log is reported in the text as a window-dependence
+# check only. Delta-delta-G is therefore recomputed here from each mutant's
+# own Delta-G rather than read from the log's pre-computed column, so the
+# figure cannot silently keep a stale reference.
+WT_REF, WT_SD = -38.06, 2.14
+for m in re.finditer(r"\[(\w+)\]\s*ΔG = ([-\d.]+) ± ([\d.]+)", txt):
+    name, dg, sd = m.group(1), float(m.group(2)), float(m.group(3))
     grp = "contact" if name in ("D141A", "E194A", "E198A", "E202A") else "control"
-    ddg[name] = (float(ddg_v), float(sd), grp)
+    ddg[name] = (dg - WT_REF, sd, grp)
 rtxt = open(os.path.join(ROOT, "data", "mut_ddg", "mut_ddg_replica_results.txt")).read()
-for m in re.finditer(r"\[(\w+)\]\s*rep2 ΔG = ([-\d.]+) ± ([\d.]+).*?ΔΔG = ([\d.]+)", rtxt):
-    rep[m.group(1)] = (float(m.group(4)), float(m.group(3)))
+for m in re.finditer(r"\[(\w+)\]\s*rep2 ΔG = ([-\d.]+) ± ([\d.]+)", rtxt):
+    rep[m.group(1)] = (float(m.group(2)) - WT_REF, float(m.group(3)))
 
 order = ["D141A", "D81A", "E194A", "E198A", "E202A", "E29A"]
 labels, vals, errs, cols = [], [], [], []
@@ -123,7 +127,7 @@ for n in order:
     v, sd, grp = ddg[n]
     labels.append(n + ("\n(contact)" if grp == "contact" else "\n(control)"))
     vals.append(v)
-    errs.append(float(np.sqrt(sd ** 2 + wt_sd ** 2)))   # propagated SD
+    errs.append(float(np.sqrt(sd ** 2 + WT_SD ** 2)))   # propagated SD
     cols.append("#4C72B0" if grp == "contact" else "#C44E52")
 
 fig, ax = plt.subplots(figsize=(7.5, 5.0))
@@ -144,7 +148,7 @@ for i, n in enumerate(order):
                     textcoords="offset points", xytext=(0, 8), fontsize=7, ha="center")
 ax.set_xticks(x); ax.set_xticklabels(labels, fontsize=8)
 ax.set_ylabel("ΔΔG vs WT (kcal/mol)")
-ax.set_title("In-silico alanine scan of cavity hotspots (WT ΔG = -32.40 ± 1.73 kcal/mol)\n"
+ax.set_title("In-silico alanine scan of cavity hotspots (WT ΔG = -38.06 ± 2.14 kcal/mol)\n"
              "Blue = contact-residue mutants; Red = non-contact controls; ◆ = independent replica",
              fontsize=10)
 ax.text(0.99, 0.02, "Error bars = SD propagated from the mutant and WT reference (single 20-ns replica). No entropy term.",
