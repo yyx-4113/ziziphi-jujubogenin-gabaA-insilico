@@ -10,3 +10,10 @@
 *.pdbqt
 # keep npt.gro (small post-equilibration structure, needed by verify_rg.py) and input pdbs if added later
 !analysis/md/npt.gro
+
+# The four docked poses and the two source structures are small (4.6 MB total) and are
+# required to reproduce the Fig. 1 geometry, so they are tracked despite the patterns above.
+!analysis/docking/*.pdbqt
+!analysis/docking/structures/
+!analysis/docking/structures/*.pdb
+!analysis/docking/structures/*.pdbqt

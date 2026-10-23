@@ -10,7 +10,10 @@ This is a **computational-only** study. No animals, humans, tissues, or wet-lab 
 
 ```
 analysis/
-  docking/   docking logs (juju_BZ, flum_BZ, jujubogenin_tight, flumazenil_tight), docking_results.md, box_center.txt
+  docking/   four Vina logs (juju_BZ, flum_BZ, jujubogenin_tight, flumazenil_tight),
+             the four best poses as pdbqt, docking_results.md, box_center.txt,
+             structures/ (6X3Z.pdb, 6X3U.pdb, rec_ok.pdbqt),
+             verify_pose_geometry.py (reproduces the Fig. 1 pose-geometry distances)
   md/        MD metrics (rmsd_final.csv/json), MM-GBSA (mmpbsa_r3.dat), interaction energies (interaction_energy_summary.json, contact_residue_energy.json), post-equilibration structure (npt.gro)
   scan/      alanine-scan ΔΔG tables (mut_ddg_results.txt, mut_ddg_replica_results.txt), post_summary.txt, diag_summary.json,
              cross-map matrices (crossmap_*.csv),

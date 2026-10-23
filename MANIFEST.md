@@ -1,22 +1,27 @@
 # MANIFEST - ziziphi-jujubogenin-gabaA-insilico
 
-Generated: git 9584866, 46 files
-
-All files are SHA-256 verified. Raw MD trajectories are excluded
-(archived separately, see README).
+All files are SHA-256 verified. Raw MD trajectories are excluded (archived separately, see README).
 
 | File | SHA-256 | Bytes |
 |---|---|---|
-| .gitignore | 7284ce31e973d47365ce1fd0efbf822bc6e1f06c3b857bbbd424aa51d9488937 | 331 |
+| .gitignore | e8d46d4a64e63eee762d4aab707a5ca311424ecc238e1748418f81427bd207eb | 640 |
 | CITATION.cff | 4eb64cb9baf60ad2a45465469f305bfdae1329e530476b2e5871fd8f13479485 | 1145 |
 | LICENSE | 7b36f471cfb9e7c7c6611b00426888737e0cb9b845e48897d8ced9c1b15243f4 | 1069 |
-| README.md | 9bba3252f69229419624850af50c7c0e4cb381cba2c47000c57d5f4d919a7a31 | 6122 |
+| README.md | c6dfbbc5a170ee84f04c01085e31704ea893489d2507e8ee4c5bc5d43a57e1c3 | 6314 |
 | analysis/docking/box_center.txt | 34475159e00b2e230ac5cda2eaddf4c29bfabdd42bfb682cb99427f178ff4b73 | 22 |
-| analysis/docking/docking_results.md | 62c4f623aecc317be5d089e5f229d126ea4928d5b982923c3721935c2cf8791b | 4760 |
+| analysis/docking/docking_results.md | 80f6bae123c7fadc877cf81f6bec1b5ac9fa73a919a3cbe6428c6ea1c6c0d635 | 6872 |
+| analysis/docking/flum_BZ.pdbqt | b41f4b5f81cc2f797baf70ee4b2b3cff8e7cc93afb0a2bff639451f193b9fc5b | 50775 |
 | analysis/docking/flum_BZ_log.txt | 8323eb728300cc764d97634646707e8d82fd77910e45e68d9148d1ec25ca182f | 2530 |
+| analysis/docking/flumazenil_tight.pdbqt | b1a70448a0330fc3d33c5581cfc4462910f60426cd9f232e22826d3a037a269f | 60297 |
 | analysis/docking/flumazenil_tight_log.txt | cdf651b6b64789e985e37aa08baca91a4e5a29ffb49387d2d413effe0025d085 | 2534 |
+| analysis/docking/juju_BZ.pdbqt | 6577b47d0e3ab7f60dfce0087d0bdd968c553d4daafe0232df673789d440a47c | 27596 |
 | analysis/docking/juju_BZ_log.txt | 98fd3b2661a9209f18abb04db5d392f32130d9e744f2c4eaa78469642f75d2dd | 2530 |
+| analysis/docking/jujubogenin_tight.pdbqt | c97d0157486f9c6b8affaff5595a83830bd8fdcb0c9d91f1d86595789a82072f | 124191 |
 | analysis/docking/jujubogenin_tight_log.txt | 55f15a78ff5fd11582d13545521ef5d0c8d7175df5aaa77af6b52a3144530e33 | 2494 |
+| analysis/docking/structures/6X3U.pdb | bb582d231d6103c2e7a9c65c6ef3c0215262fcfaf3a8946fe97fb5f2c019c465 | 1590111 |
+| analysis/docking/structures/6X3Z.pdb | 0bcb502712523730ddb525e76b0c810787ea7a371a62b79ed1176e09d1bf4884 | 1586304 |
+| analysis/docking/structures/rec_ok.pdbqt | 4f26eecc84881f10c2743607e5437a19e08783ae1df2cf17ce8b34ab93f82e6f | 1092245 |
+| analysis/docking/verify_pose_geometry.py | 04e3710a20a21597fbba225f22b1f780e099e54d2ff27bc9bff95c777164cd35 | 7272 |
 | analysis/md/contact_residue_energy.json | cb19d7319049a16845d69217bcc0e2cd51adca3d097ee0465867bb5f082e4f9c | 6147 |
 | analysis/md/interaction_energy_summary.json | 39b2dd23697e92df56ea83b2a20ac23730810b2c555a07052b68a033c9166cbd | 2203 |
 | analysis/md/mmpbsa_r3.dat | cc68045389e0e4961bcc33a9701a9cc72dc66d1ffef1d724165e78ff6a73c835 | 6585 |
@@ -35,7 +40,7 @@ All files are SHA-256 verified. Raw MD trajectories are excluded
 | analysis/scan/mut_ddg_replica_results.txt | d5ba342a85f7921181f3922bea4bb8208d755e91ec341f488aa936410adda771 | 2188 |
 | analysis/scan/mut_ddg_results.txt | 5f96461fc0057b1306b813e29435d6e10c31d8a882d7cbdd7e50df3b0d5c2945 | 2935 |
 | analysis/scan/post_summary.txt | 7da8248ca3da28a350dfd575b94a63c37533e4c558161e42ed61ad2f0de3fe2f | 963 |
-| analysis/scan/verify_ddg_from_decomp.py | 56d5b8cf551e9b92bd36bd2ad8299ed0af88d9e144c92b750dd9eba18f7504e7 | 5494 |
+| analysis/scan/verify_ddg_from_decomp.py | e68c4f4b7991c34eb2069e41075f0287eea3bc8d6ff2b93905a794ddec6c63f5 | 5701 |
 | analysis/wt/README.md | 461da903563c5464f356fd94c778a586769682ea7243d214e13ce49a9e34d4c6 | 1252 |
 | analysis/wt/REGENERATE_WT_30to50ns.md | bb759815d60e34db8166f65bda3cbb8142fb355b228cfc83d1574ae0d8e871fa | 7411 |
 | analysis/wt/WT_MMGBSA_OUTPUT_0to24.8ns.txt | bc88ea3c755f677646dba63fbada14d7a6de5a7844de6c4060180146e6b8c142 | 6609 |
@@ -46,9 +51,9 @@ All files are SHA-256 verified. Raw MD trajectories are excluded
 | figures/Fig2_md_stability.svg | e629e3a69c8c2595bb45e724e5593f04bb22f9e596681cbcb17ce4987c8b11bb | 89494 |
 | figures/Fig3_alanine_scan.png | 747ff50e1a3537d5664ee2c81977261b6f71eff839ba6d3fcfe589173c09e963 | 141573 |
 | figures/Fig3_alanine_scan.svg | 997cbc9300d84be08d9fc2de6c404d549a0c67426995b31a2192c26bf77083ca | 80932 |
-| manuscript/manuscript.docx | 0b87a02b111aaf5da89564b65c34eb69b2328a91d4e0053b486b31db0f324be6 | 1761989 |
-| manuscript/manuscript.md | 8e8701dd25a3c73378cce97db0d09a943e84839c47329d26f3f273ad502ecec5 | 47094 |
-| manuscript/manuscript_ZSS_insilico_v3.0.md | 8e8701dd25a3c73378cce97db0d09a943e84839c47329d26f3f273ad502ecec5 | 47094 |
+| manuscript/manuscript.docx | dc9207cb7754d055a45aef41f3ef651e5e0f0a1b9678a8d9cecdc86a731d0d5a | 1762384 |
+| manuscript/manuscript.md | 481e6693132e7100edbdde792cb40929a94550ed9f02678f82cb2866ee081b79 | 47844 |
+| manuscript/manuscript_ZSS_insilico_v3.0.md | 481e6693132e7100edbdde792cb40929a94550ed9f02678f82cb2866ee081b79 | 47844 |
 | scripts/make_fig1_v2.py | 4dc3b913e02c214563a182ae76eb2e01d985c63556e66f2c35712303602d7030 | 7333 |
 | scripts/make_figures.py | f6d01e8d74f0ac7555ecc192a7b8dd24a1f0b7300392e6c6a7fddd31e566e9fe | 7095 |
 | scripts/md2docx.py | ed8d3b65538354d49888a1ff88cedf50f3ac631f839f753ec659d09199452e51 | 9016 |

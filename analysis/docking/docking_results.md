@@ -1,44 +1,119 @@
-# In-silico target validation — Level (i): Molecular docking of jujubogenin at the GABA_A benzodiazepine site
+# Molecular docking of jujubogenin at the human α1β2γ2 GABA_A receptor
 
-**Status:** EXECUTED (real computation, not simulated). This is the docking layer (i) of Figure 7 in the protocol.
-Layers (ii) MD simulation, (iii) microscale thermophoresis (MST) affinity, and (iv) in-vivo flumazenil antagonism remain to be executed.
+**Status:** EXECUTED (real computation). Docking is the first computational layer of the
+study; molecular dynamics and in-silico alanine scanning were subsequently performed and are
+reported in `../md/` and `../scan/`. The decisive functional tests (electrophysiology,
+affinity measurement, in-vivo sleep end-points) are explicitly **outside the scope** of this
+study and are not claimed here.
 
-## Methods (reproducible)
-- **Receptor:** PDB `6X3Z` — cryo-EM structure of the α1β3γ2S GABA_A receptor (GABA bound at orthosteric sites; benzodiazepine site unoccupied). Subunits: α1 = chains B & D, β3 = C, γ2 = E. Receptor prepared as rigid PDBQT (heavy atoms + Gasteiger charges) from chains A–E (Fab fragments and all HETATM removed).
-- **Ligands (real 3D coordinates, PubChem):**
-  - Jujubogenin — PubChem CID 15515703 (C30H48O4, MW 472.7). This is the gastric-hydrolysis metabolite of jujubosides identified by Song 2017 as the GABA_A-active species.
-  - Flumazenil — PubChem CID 3373 (C15H14FN3O3, MW 303.3), used as a **positive control** for the benzodiazepine site.
-- **Docking engine:** AutoDock Vina 1.2.7 (Windows binary, `vina_1.2.7_win.exe`), rigid ligand (TORSDOF 0), exhaustiveness 24–32, 20 output modes.
-- **Box:** centered on the α1(D)/γ2(E) benzodiazepine-site interface. Primary (tight) box center `[97.518, 105.844, 123.021]` Å, size 22 Å. A broader 30 Å box was used first and is reported for transparency.
-- **Tooling:** RDKit 2026.3.6 + Open Babel 3.2.1 (PDBQT prep/validation) in the `default` conda venv.
+**Revision note (2026-10-24).** This file previously recorded an earlier docking pass whose
+conclusion, that jujubogenin and flumazenil occupy the same benzodiazepine pocket, has been
+**retracted** in the manuscript. The retraction's cause was a search box centred 21.46 A
+from the benzodiazepine site (see "Documented failure mode" below). The file has been
+rewritten so that every number below is traceable to one of the four deposited Vina logs,
+and the exploratory box is no longer described as the benzodiazepine site. Run
+`verify_pose_geometry.py` in this directory to reproduce the Fig. 1 geometry claims.
 
-## Results — primary (tight 22 Å box, α1+/γ2− pocket)
+## Receptor
 
-| Ligand | Best affinity (kcal/mol) | 2nd mode | Pose cluster (rmsd LB) |
+- **Structure:** PDB `6X3Z`, human GABA_A receptor α1β2γ2 in complex with GABA; cryo-EM,
+  3.23 A, EMD-22037. Deposited coordinates are in `structures/6X3Z.pdb`.
+- **Subunit assignment, verified from the deposited coordinates** (not from the RCSB
+  annotation, whose chain mapping is unreliable for this entry). Chains were identified by
+  the subunit-signature residues of the benzodiazepine site:
+
+  | chains | signature residues found | subunit |
+  |---|---|---|
+  | B, D | HIS102 and SER205 | α1 (338 residues, numbering 10–347) |
+  | A, C | neither | β2 (334 residues, numbering 7–340) |
+  | E | TYR58 and PHE77 | γ2 (333 residues, numbering 25–357) |
+
+  Chains F/G/H/I of the deposit are Fab fragments. Independent confirmation: in the
+  flumazenil co-crystal `6X3U`, the co-crystallised ligand contacts HIS102/SER205 on chain D
+  and TYR58/PHE77 on chain E, so chain D is necessarily α1 and chain E γ2.
+- **Prepared receptor:** `structures/rec_ok.pdbqt`, rigid, heavy atoms with Gasteiger
+  charges, all five receptor chains retained (13,653 atoms; Fab and all HETATM removed).
+  Chain labels are preserved from the deposit, so chain D = α1 and chain E = γ2.
+
+## Ligands
+
+- **Jujubogenin** — PubChem CID 15515703 (C30H48O4, MW 472.7), the gastric-hydrolysis
+  metabolite of jujubosides identified by Song 2017 as the GABA_A-relevant species.
+- **Flumazenil** — PubChem CID 3373 (C15H14FN3O3, MW 303.3), positive control for the
+  benzodiazepine site.
+
+## Engine and boxes
+
+AutoDock Vina 1.2.7; rigid ligand (TORSDOF 0); exhaustiveness 32; 20 output modes;
+grid spacing 0.375 A. Two search boxes were used, and the distinction between them is the
+whole point of the analysis:
+
+| box | centre (A) | size | purpose |
 |---|---|---|---|
-| Jujubogenin | **−8.32** | −8.28 (rmsd 0.34) | tight (modes 1–2 within 0.34 Å; modes 3–11 within ~2–4 Å) |
-| Flumazenil (control) | **−7.11** | −6.94 (rmsd 4.02) | broader scatter within pocket |
+| **BZ box** | 81.46, 119.93, 120.91 | 20 A | crystal-validated benzodiazepine site |
+| **exploratory cavity box** | 97.518, 105.844, 123.021 | 22 A | unbiased search of the α1/γ2 interface |
 
-Best-pose receptor contacts (heavy-atom min distance ≤ 4.5 Å):
+The BZ box centre was placed on the Cα centroid of the 13 residues that contact flumazenil
+in the 6X3U co-crystal (chain D: 100, 102, 159, 160, 203, 205, 206, 207, 210; chain E: 58,
+77, 79, 142); the grid centre and that Cα centroid differ by 0.27 A. The exploratory box
+centre lies **21.46 A** from the BZ centroid.
 
-**Jujubogenin** — α1(D): MET141 (1.99 Å), MET58 (2.70), HIS142 (2.74), TYR282 (2.82), PRO140 (2.89), VAL280 (3.84); γ2(E): ARG194 (2.05), ARG232 (2.24), TRP196 (2.26), TYR199 (2.57), LEU198 (2.77), THR193 (3.30), ARG197 (3.46), ASP192 (3.88), SER195 (3.94), PHE203 (4.41).
+## Results (from the four deposited logs)
 
-**Flumazenil (control)** — α1(D): MET141 (2.77), HIS142 (2.77), MET58 (3.25), TYR282 (2.90), VAL280 (3.05); γ2(E): LEU198 (1.93), THR193 (2.70), ARG194 (2.83), TYR199 (2.88), PHE203 (3.68), ARG232 (3.91), SER202 (3.91), TRP196 (4.03), PHE201 (4.24).
+| log | ligand | box | best affinity (kcal/mol) | second mode |
+|---|---|---|---|---|
+| `flum_BZ_log.txt` | flumazenil | BZ 20 A | **−7.086** | −6.895 |
+| `juju_BZ_log.txt` | jujubogenin | BZ 20 A | **−4.403** | −3.938 |
+| `jujubogenin_tight_log.txt` | jujubogenin | cavity 22 A | **−8.324** | −8.284 (rmsd 0.34 A) |
+| `flumazenil_tight_log.txt` | flumazenil | cavity 22 A | **−7.11** | −6.943 |
 
-**Shared pocket residues** (both ligands): α1 MET141, HIS142, MET58, TYR282, VAL280; γ2 ARG194, TRP196, TYR199, THR193, ARG232, ASP192/PHE203. The overlap confirms both compounds occupy the same α1+/γ2− benzodiazepine pocket.
+**Pose geometry** (reproduced by `verify_pose_geometry.py`; pose centroid = unweighted mean
+of all atoms of the best-scoring pose, measured from the BZ box centre):
 
-## Broad 30 Å box (transparency)
-- Jujubogenin: −8.41 kcal/mol; flumazenil: −7.25 kcal/mol. In the large box flumazenil preferred the adjacent α1+/β3− BZ-sensitive site (chains D/C), consistent with flumazenil's known promiscuity across BZ sites; jujubogenin remained at the α1+/γ2− interface. This motivated the tighter 22 Å box used as primary.
+| pose | distance to BZ centroid | Fig. 1 value |
+|---|---|---|
+| flumazenil, BZ box | 7.49 A | 7.5 A |
+| jujubogenin, BZ box | 11.44 A | 11.4 A |
+| flumazenil, cavity box | 22.90 A | 22.9 A |
+| jujubogenin, cavity box | 23.12 A | 23.1 A |
 
-## Interpretation (honest, computational-only)
-1. **Site validation passed.** A crystallographically-relevant benzodiazepine-site ligand (flumazenil) docks into the defined α1+/γ2− pocket, confirming the box localizes the true binding site. Jujubogenin docks into the *same* pocket and shares its key contact residues — supporting the protocol's hypothesis that jujubogenin can engage the GABA_A benzodiazepine site.
-2. **Docking score ≠ binding affinity.** Vina scores are relative ranking energies, not quantitative Kd/pKi. Jujubogenin's more negative score does **not** imply higher affinity than flumazenil; flumazenil is the established high-affinity BZ ligand. The score only indicates jujubogenin finds a favorable pose in the pocket.
-3. **Caveats.** (a) Rigid receptor, single conformer of 6X3Z, single ligand conformer (obabel/rdkit protonation, not exhaustive conformational sampling). (b) No water/electrostatics beyond Vina's empirical scoring. (c) The BZ site in 6X3Z is unoccupied; the pocket geometry may shift upon ligand binding (to be tested by MD, layer ii). (d) Docking supports *feasibility of binding*, not *physiological modulation* — that requires MST (iii) and in-vivo flumazenil antagonism (iv).
+## Documented failure mode
 
-## Files
-- `rec_ok.pdbqt` — prepared receptor
-- `jujubogenin_ok.pdbqt`, `flumazenil_ok.pdbqt` — prepared ligands
-- `jujubogenin_tight.pdbqt`, `flumazenil_tight.pdbqt` — 20 docked poses each
-- `jujubogenin_tight_log.txt`, `flumazenil_tight_log.txt` — Vina logs (full mode tables)
-- `box_center.txt` / `box_size.txt` — final box
-- `make_inputs.py`, `analyze_contacts.py`, `analyze_tight.py`, `tighter_box.py` — reproducible scripts
+An earlier docking pass treated the exploratory box as the benzodiazepine site, reported
+jujubogenin −8.32 kcal/mol and flumazenil −7.11 kcal/mol "in the benzodiazepine pocket", and
+concluded from the shared contact residues that both ligands occupy the same site. That
+conclusion is **wrong and is retracted** in the manuscript. The box was centred 21.46 A
+from the benzodiazepine site, so it samples the membrane-proximal α1/γ2 cavity instead; the
+two ligands never competed for the same volume. Re-docking both ligands into the properly
+centred BZ box gives flumazenil −7.086 kcal/mol against jujubogenin −4.403 kcal/mol, i.e.
+jujubogenin does **not** preferentially occupy the benzodiazepine site under this protocol.
+
+## Interpretation
+
+1. **Protocol validation passed.** Flumazenil redocks into the crystal-defined
+   benzodiazepine site at −7.086 kcal/mol, contacting α1 HIS102/SER205/VAL203 and γ2
+   TYR58/PHE77, a subset of the 6X3U contact set.
+2. **Jujubogenin does not prefer that site.** In the identical box it scores −4.403 kcal/mol.
+3. **A distinct cavity is identified.** In the exploratory box jujubogenin scores
+   −8.324 kcal/mol at a membrane-proximal α1/γ2 cavity whose centroid lies 23.1 A from the
+   benzodiazepine centroid, with no contact residue shared with the classical
+   benzodiazepine set. This pose was carried into MD.
+4. **Score comparison is intra-ligand only.** The −8.324 versus −4.403 comparison ranks two
+   poses of the *same* ligand in *different* search volumes; it is not an affinity ratio,
+   and a Vina score is not a Kd or pKi. Confirming site preference requires a
+   cavity-targeted re-dock, which the manuscript lists as remaining work.
+5. **Caveats.** Rigid receptor, single conformer, single ligand conformer, no explicit water
+   or entropy; the benzodiazepine site of 6X3Z is unoccupied, so its geometry may shift on
+   binding. Docking supports feasibility of a pose, not physiological modulation.
+
+## Files in this directory
+
+| file | content |
+|---|---|
+| `flum_BZ_log.txt`, `juju_BZ_log.txt` | Vina logs, benzodiazepine box (20 A) |
+| `jujubogenin_tight_log.txt`, `flumazenil_tight_log.txt` | Vina logs, exploratory cavity box (22 A) |
+| `flum_BZ.pdbqt`, `juju_BZ.pdbqt`, `flumazenil_tight.pdbqt`, `jujubogenin_tight.pdbqt` | 20 poses each, best pose first |
+| `box_center.txt` | exploratory cavity box centre |
+| `structures/6X3Z.pdb`, `structures/6X3U.pdb` | deposited receptor structures |
+| `structures/rec_ok.pdbqt` | prepared docking receptor |
+| `verify_pose_geometry.py` | reproduces the Fig. 1 geometry table above |

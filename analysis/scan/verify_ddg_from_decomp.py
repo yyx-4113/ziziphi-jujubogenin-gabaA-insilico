@@ -3,9 +3,12 @@
 
 Claim being verified (manuscript section 4.5 / Data availability):
     "The six mutant dG values in the table above are re-derivable from those
-     deposits: each decomp_<mutant>.dat file carries a per-frame dG_bind column
-     whose 100-frame mean reproduces the tabulated value to within
-     1.06 kcal/mol (RMS 0.75, Pearson r = 0.9998)."
+     deposits: each decomp_<mutant>.dat file carries a per-frame, per-residue
+     decomposition (the DELTAS: section, 672 rows x 100 frames), and summing
+     the TOTAL column within each frame and averaging over the 100 frames
+     reproduces the tabulated value to within 1.06 kcal/mol (RMS 0.75,
+     Pearson r = 0.9998); the recomputation is scripted as
+     analysis/scan/verify_ddg_from_decomp.py."
 
 File layout of allmode/decomp_<MUT>.dat (verified by header inspection):
 
