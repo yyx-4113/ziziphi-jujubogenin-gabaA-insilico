@@ -37,9 +37,9 @@ All files are SHA-256 verified. Raw MD trajectories are excluded (archived separ
 | figures/Fig2_md_stability.svg | e629e3a69c8c2595bb45e724e5593f04bb22f9e596681cbcb17ce4987c8b11bb | 89494 |
 | figures/Fig3_alanine_scan.png | 747ff50e1a3537d5664ee2c81977261b6f71eff839ba6d3fcfe589173c09e963 | 141573 |
 | figures/Fig3_alanine_scan.svg | 997cbc9300d84be08d9fc2de6c404d549a0c67426995b31a2192c26bf77083ca | 80932 |
-| manuscript/manuscript.docx | fcb875a54bd2bd9cc1436a50230fa2821bddea707d5490d96449b4bf5cc9ce4f | 1760151 |
-| manuscript/manuscript.md | ec5e04e174f4df2066748691c69a8d9058954d556195fc9a59a0b06187da22e8 | 42229 |
-| manuscript/manuscript_ZSS_insilico_v3.0.md | 38617af7cb91bd4b22baed2ea4c54dfe773d21a61f193de51792063f6908c7d5 | 45981 |
+| manuscript/manuscript.docx | f72fa0c87ec750de3a00f900264fefb6821127bf908d508b5e3736c664047432 | 1761701 |
+| manuscript/manuscript.md | 17f71d3cf3fd1881a3d135417ddfa3f20de47d236ee20b2eb6522754359b5a92 | 46158 |
+| manuscript/manuscript_ZSS_insilico_v3.0.md | 17f71d3cf3fd1881a3d135417ddfa3f20de47d236ee20b2eb6522754359b5a92 | 46158 |
 | scripts/make_fig1_v2.py | 4dc3b913e02c214563a182ae76eb2e01d985c63556e66f2c35712303602d7030 | 7333 |
 | scripts/make_figures.py | f6d01e8d74f0ac7555ecc192a7b8dd24a1f0b7300392e6c6a7fddd31e566e9fe | 7095 |
 | scripts/md2docx.py | ed8d3b65538354d49888a1ff88cedf50f3ac631f839f753ec659d09199452e51 | 9016 |
