@@ -7,7 +7,7 @@ README. A frozen copy of this repository is archived at Zenodo: 10.5281/zenodo.2
 | File | SHA-256 | Bytes |
 |---|---|---|
 | .gitignore | e8d46d4a64e63eee762d4aab707a5ca311424ecc238e1748418f81427bd207eb | 640 |
-| CITATION.cff | e2f36d48c961b9f768a47729ac509a2aa6a09717db24e742ea58500017c03663 | 1189 |
+| CITATION.cff | a1604ccef8c6983a3c38e467821b3d71ea8fd3411b943306fe8ade890470b20b | 1189 |
 | LICENSE | 7b36f471cfb9e7c7c6611b00426888737e0cb9b845e48897d8ced9c1b15243f4 | 1069 |
 | README.md | 5e3ad65a88577ffd1b45b28bc2db9a3ef140c9ba7f52ed16fa20421830da77a3 | 9946 |
 | analysis/docking/box_center.txt | 34475159e00b2e230ac5cda2eaddf4c29bfabdd42bfb682cb99427f178ff4b73 | 22 |
@@ -69,9 +69,9 @@ README. A frozen copy of this repository is archived at Zenodo: 10.5281/zenodo.2
 | figures/Fig2_md_stability.svg | 52fa3abfcc1217da291040b52badf23f337d3888b26aebe2789190b494768dbb | 89494 |
 | figures/Fig3_alanine_scan.png | 82c0dd88bd8fdf4ad2c7f20d43f11acd904357d1991b84d4c7f8774f47b3ebf6 | 141012 |
 | figures/Fig3_alanine_scan.svg | 7957de866b9ebe3ba77cba7e8d7dc509cd334ae4ddb332d6359af453ef404b6b | 82466 |
-| manuscript/manuscript.docx | 3600d466abaf0aedb5c488fb36b91bf40dd072a729e628a14c40fb6eb7715410 | 1764113 |
-| manuscript/manuscript.md | f07d1a07693a46c1a70b94d22e1fcd940e7165426664546c8cc6c7440f6d0fe8 | 55492 |
-| manuscript/manuscript_ZSS_insilico_v3.0.md | f07d1a07693a46c1a70b94d22e1fcd940e7165426664546c8cc6c7440f6d0fe8 | 55492 |
+| manuscript/manuscript.docx | 80350dc498a86b7410a13cadff92c8aee264b730eb4272d4d1f14bf64236454d | 1764189 |
+| manuscript/manuscript.md | f09841f48ca77d887a721537decdf435f15df47625499740fced9c9507039f99 | 55793 |
+| manuscript/manuscript_ZSS_insilico_v3.0.md | f09841f48ca77d887a721537decdf435f15df47625499740fced9c9507039f99 | 55793 |
 | scripts/make_fig1_v2.py | 4dc3b913e02c214563a182ae76eb2e01d985c63556e66f2c35712303602d7030 | 7333 |
 | scripts/make_figures.py | 48bb9f44e87ae24a7fe901bfb9d6beff5067300944ad0f99ec06cd36a6159ece | 7917 |
 | scripts/md2docx.py | ed8d3b65538354d49888a1ff88cedf50f3ac631f839f753ec659d09199452e51 | 9016 |
