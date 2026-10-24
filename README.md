@@ -20,10 +20,15 @@ analysis/
              allmode/decomp_<MUT>.dat  (6 × 9.6 MB, complete per-residue MM-GBSA decompositions,
                                         100 frames × 672 residues × 4 sections),
              rep1/mmpbsa_<MUT>.dat     (6 × gmx_MMPBSA output, the six first-replica ΔG),
+             rep1/complex_<MUT>.gro    (6 × starting coordinates as built by tleap,
+                                        unsolvated complex; underpins the §4.5
+                                        build-warning note),
              rep2/mmpbsa_<MUT>_rep2.dat + gmx_MMPBSA_<MUT>_rep2.log
                                        (2 × independently seeded second replicas, D141A and E194A),
              verify_all_dG_outputs.py  (recomputes EVERY ΔG and ΔΔG of §4.5 / Fig. 3 from
                                         wt/, rep1/ and rep2/ — the single entry point),
+             verify_mutant_topologies.py (checks the §4.5 atom-count identity from
+                                        rep1/complex_<MUT>.gro and mut_ddg_results.txt),
              verify_ddg_from_decomp.py (reproduces the six ΔG values from allmode/),
              verify_block_replicate.py (auxiliary: half- and quarter-trajectory block
                                         agreement within each deposited run),
@@ -67,6 +72,8 @@ manuscript/  manuscript_ZSS_insilico_v3.0.md (source), manuscript.md (submission
 | Two independently seeded replica ΔG (D141A, E194A) | **artifact-backed** — `analysis/scan/rep2/mmpbsa_<MUT>_rep2.dat`, with `gmx_MMPBSA_<MUT>_rep2.log` recording the command line, the trajectory (`md_<MUT>_rep2_img.xtc`) and the 100 processed frames |
 | WT ΔG −38.06 ± 2.14 (0–24.8 ns window) — the scan reference | **artifact-backed** — `analysis/wt/mmpbsa_wt_100frames.dat` and the recovered output text `analysis/wt/WT_MMGBSA_OUTPUT_0to24.8ns.txt` |
 | WT ΔG −32.40 ± 1.73 (30–50 ns window) — convergence / window-sensitivity check | **artifact-backed** — `analysis/wt/mmpbsa_wt_matched_30to50ns.dat` (gmx_MMPBSA, 100 complex frames); input trajectory and verbatim regeneration recipe retained as an independent cross-check |
+| Mutant starting coordinates (all six) | **artifact-backed** — `analysis/scan/rep1/complex_<MUT>.gro`; `verify_mutant_topologies.py` confirms complex = receptor + 82-atom ligand and WT − receptor = substitution difference (7 / 7 / 14 / 9 / 1 / 6) for every mutant |
+| Solvated, equilibrated mutant boxes | **not deposited** — >14 MB each; the pipeline log records the fresh minimisation, NVT and NPT equilibration |
 
 Every number in the §4.5 table and in Fig. 3 is therefore recomputed from a retained output by
 `analysis/scan/verify_all_dG_outputs.py`; none depends on a pipeline log.

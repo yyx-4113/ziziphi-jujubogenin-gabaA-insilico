@@ -1,13 +1,15 @@
 # MANIFEST - ziziphi-jujubogenin-gabaA-insilico
 
-All files are SHA-256 verified. Raw MD trajectories (>1.5 GB) are excluded because they exceed the platform's per-file size limit; see README. A frozen copy of this repository is archived at Zenodo: 10.5281/zenodo.23602221.
+All files are SHA-256 verified. Raw MD trajectories (>1.5 GB) and the solvated mutant
+boxes (>14 MB each) are excluded because they exceed the platform's per-file size limit; see
+README. A frozen copy of this repository is archived at Zenodo: 10.5281/zenodo.23602221.
 
 | File | SHA-256 | Bytes |
 |---|---|---|
 | .gitignore | e8d46d4a64e63eee762d4aab707a5ca311424ecc238e1748418f81427bd207eb | 640 |
-| CITATION.cff | 29b9cc62a4f181547c97d49ec077bd0b37738b6a35a2cbbce46919144dbefc7c | 1189 |
+| CITATION.cff | 4e64334c480a1f1e4dd93c8dfb06efb855efb76eaab8842d481ced01bf377626 | 1189 |
 | LICENSE | 7b36f471cfb9e7c7c6611b00426888737e0cb9b845e48897d8ced9c1b15243f4 | 1069 |
-| README.md | 5c34ac9b35a07ea6c030943ce889d35d141bc1c13d469d88d64e232f86c1a44f | 9124 |
+| README.md | 5e3ad65a88577ffd1b45b28bc2db9a3ef140c9ba7f52ed16fa20421830da77a3 | 9946 |
 | analysis/docking/box_center.txt | 34475159e00b2e230ac5cda2eaddf4c29bfabdd42bfb682cb99427f178ff4b73 | 22 |
 | analysis/docking/docking_results.md | 80f6bae123c7fadc877cf81f6bec1b5ac9fa73a919a3cbe6428c6ea1c6c0d635 | 6872 |
 | analysis/docking/flum_BZ.pdbqt | b41f4b5f81cc2f797baf70ee4b2b3cff8e7cc93afb0a2bff639451f193b9fc5b | 50775 |
@@ -55,6 +57,7 @@ All files are SHA-256 verified. Raw MD trajectories (>1.5 GB) are excluded becau
 | analysis/scan/verify_block_replicate.py | d899e39f13e7b1ff56ec610f86778e7a7baf7c1f340996ebc3cfff47c31fbc3d | 7132 |
 | analysis/scan/verify_bz_separation.py | c7c222b680ba2dd49510e40d3e1ef3d3c2d97dd1c5c34c393845d788b765f4c9 | 9410 |
 | analysis/scan/verify_ddg_from_decomp.py | e68c4f4b7991c34eb2069e41075f0287eea3bc8d6ff2b93905a794ddec6c63f5 | 5701 |
+| analysis/scan/verify_mutant_topologies.py | 2eaca9aa5c6978c5e1037bcdec334797b057fcd77bd0b2b119f7b0a2b9d7b2ed | 4094 |
 | analysis/wt/README.md | 23b4a972a39f82ad68e67c2bc2fa49b6472da2619df6cd71941eaa5a30b9ef84 | 1864 |
 | analysis/wt/REGENERATE_WT_30to50ns.md | f751bf4f5057c6893919276b98d2fe6f51d96a674db532e2002d53555f8e80b0 | 7659 |
 | analysis/wt/WT_MMGBSA_OUTPUT_0to24.8ns.txt | bc88ea3c755f677646dba63fbada14d7a6de5a7844de6c4060180146e6b8c142 | 6609 |
@@ -66,9 +69,9 @@ All files are SHA-256 verified. Raw MD trajectories (>1.5 GB) are excluded becau
 | figures/Fig2_md_stability.svg | 52fa3abfcc1217da291040b52badf23f337d3888b26aebe2789190b494768dbb | 89494 |
 | figures/Fig3_alanine_scan.png | 82c0dd88bd8fdf4ad2c7f20d43f11acd904357d1991b84d4c7f8774f47b3ebf6 | 141012 |
 | figures/Fig3_alanine_scan.svg | 7957de866b9ebe3ba77cba7e8d7dc509cd334ae4ddb332d6359af453ef404b6b | 82466 |
-| manuscript/manuscript.docx | 9b349d2943cd9969fc5302fbe9a0aae78759191cc75ebb5a5b4fade6bfaf1735 | 1766252 |
-| manuscript/manuscript.md | 0fe3e7278878249e1c4f5bf003aa4d08ca0303a6bdf98206587436a9af4f5189 | 50958 |
-| manuscript/manuscript_ZSS_insilico_v3.0.md | 0fe3e7278878249e1c4f5bf003aa4d08ca0303a6bdf98206587436a9af4f5189 | 50958 |
+| manuscript/manuscript.docx | c24e9af14f30f4782659c55d9fd9cdf0c03060e644ad29a73a92538d16518e4f | 1766556 |
+| manuscript/manuscript.md | 92b2a59eeb4e9591a5ecc13d3a91f11b32ebd3bbe7756e152d4e75d51a9b5d81 | 51817 |
+| manuscript/manuscript_ZSS_insilico_v3.0.md | 92b2a59eeb4e9591a5ecc13d3a91f11b32ebd3bbe7756e152d4e75d51a9b5d81 | 51817 |
 | scripts/make_fig1_v2.py | 4dc3b913e02c214563a182ae76eb2e01d985c63556e66f2c35712303602d7030 | 7333 |
 | scripts/make_figures.py | 48bb9f44e87ae24a7fe901bfb9d6beff5067300944ad0f99ec06cd36a6159ece | 7917 |
 | scripts/md2docx.py | ed8d3b65538354d49888a1ff88cedf50f3ac631f839f753ec659d09199452e51 | 9016 |
