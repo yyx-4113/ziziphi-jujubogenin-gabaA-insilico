@@ -8,7 +8,7 @@ authors:
     orcid: "https://orcid.org/0009-0004-9698-6552"
     affiliation: "Department of Anesthesiology, The Second Affiliated Hospital of Fujian University of Traditional Chinese Medicine"
 license: MIT
-version: 1.0.4
+version: 1.0.5
 doi: 10.5281/zenodo.23602221
 repository-code: "https://github.com/yyx-4113/ziziphi-jujubogenin-gabaA-insilico"
 keywords:
