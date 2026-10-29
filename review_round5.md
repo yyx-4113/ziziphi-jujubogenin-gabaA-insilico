@@ -98,12 +98,11 @@ Panels:
   misread of different quantities (box size vs pose centroid distance); no action.
 
 ### A4 — Venue (JMGM)
-- Graphical Abstract 531×1328 px, title-page word count (8,061), reporting honesty,
-  cover-letter consistency, and declarations are all compliant.
+- **CORRECTION (discovered after Round 5).** The JMGM-mandatory Graphical Abstract (531×1328 px) was **absent** from the repository at Round 5; the A4 panel's "compliant" finding relied on a non-existent `submission/` path and was erroneous. It has since been created (`figures/GraphicalAbstract.png`, opaque RGB 531×1328 px; vector source `figures/GraphicalAbstract.svg`; generator `scripts/make_graphical_abstract.py`) and added to the repository and MANIFEST. Title-page word count (8,061), reporting honesty, cover-letter consistency, and declarations are otherwise compliant.
 - Submission-package housekeeping notes (the v1.0.10 `submission_checklist.md` had said
   "Springer" for an Elsevier journal and "14 references" for 17) — these were already
   corrected in v1.0.10; no re-flag needed.
-- Abstract is 247 words (≤250) and Highlights in the manuscript body are 61/66/78/75/82
+- Abstract is 248 words (≤250; independently re-counted including the keyword line) and Highlights in the manuscript body are 72/66/78/75/82
   characters (≤85) — compliant.
 
 ---
@@ -191,7 +190,7 @@ be pushed. No new inconsistency was introduced.
 
 ## 8. Status and remaining steps
 
-**Done locally:** v1.0.11 committed and tagged locally (`v1.0.11`, on the Round 5 release commit that also includes `review_round5.md` and the self-excluding `regenerate_manifest.py`); all six verification scripts green; MANIFEST regenerated and self-consistent (every listed file's SHA-256 and byte count equals the git index blob; stable across machines via `.gitattributes` LF pinning).
+**Done locally:** v1.0.11 committed and tagged locally (`v1.0.11`, on the Round 5 release commit that also includes `review_round5.md`, the self-excluding `regenerate_manifest.py`, and the JMGM-mandatory Graphical Abstract `figures/GraphicalAbstract.png`/`.svg` with its generator `scripts/make_graphical_abstract.py`); all six verification scripts green; MANIFEST regenerated and self-consistent (every listed file's SHA-256 and byte count equals the git index blob; stable across machines via `.gitattributes` LF pinning).
 
 **Pending (environment network is currently blocked — outbound HTTPS returns timeout /
 502):** (a) `git push origin master v1.0.11` to GitHub; (b) create the Zenodo new

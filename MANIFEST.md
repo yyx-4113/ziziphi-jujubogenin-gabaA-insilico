@@ -10,7 +10,7 @@ README. A frozen copy of this repository is archived at Zenodo: 10.5281/zenodo.2
 | .gitignore | 5c916fbb35b4d21946ac9825bfec4a93317debf89010317514e7bf9d4536f893 | 837 |
 | CITATION.cff | 6064d161f1fd38e4ed9723cd1d1ade5cb81b70744b013f2660dd33f861c10116 | 1232 |
 | LICENSE | 7b36f471cfb9e7c7c6611b00426888737e0cb9b845e48897d8ced9c1b15243f4 | 1069 |
-| README.md | e578a3c5bd9b3a2fbe0b4f6eee73d8ab93daf3fbaab1d730d2b0098648e2f9e0 | 11278 |
+| README.md | 43500fd0df9d3cc344bba24bb1bbc1c1232d4e3f17d9fb6caaa1cdbffbcedbb4 | 11692 |
 | analysis/docking/box_center.txt | 34475159e00b2e230ac5cda2eaddf4c29bfabdd42bfb682cb99427f178ff4b73 | 22 |
 | analysis/docking/docking_results.md | 80f6bae123c7fadc877cf81f6bec1b5ac9fa73a919a3cbe6428c6ea1c6c0d635 | 6872 |
 | analysis/docking/flum_BZ.pdbqt | b41f4b5f81cc2f797baf70ee4b2b3cff8e7cc93afb0a2bff639451f193b9fc5b | 50775 |
@@ -76,13 +76,16 @@ README. A frozen copy of this repository is archived at Zenodo: 10.5281/zenodo.2
 | figures/Fig2_md_stability.svg | df788c2b1c09f1cae7376eccad4b204f93c26b481fec4511fc4abbf956866a14 | 86301 |
 | figures/Fig3_alanine_scan.png | 82c0dd88bd8fdf4ad2c7f20d43f11acd904357d1991b84d4c7f8774f47b3ebf6 | 141012 |
 | figures/Fig3_alanine_scan.svg | 1b9f52ee2db76781de9cff576bd49a963f70d9760278b8b7f37ca0d03c2462f8 | 79915 |
+| figures/GraphicalAbstract.png | 74e43f267192d59350772bd5e113716d7ab9a1bd56c92400029c391045bad6ac | 93829 |
+| figures/GraphicalAbstract.svg | 5ff2b2f175d60eacfdcadc4412cc7a676f4c4d4180dc9d27fa735e282a486386 | 132928 |
 | manuscript/manuscript.docx | 3d42b37c6c91b424cf4d1067036a608c46ce91613c61212e6aa78ab0655209df | 1763709 |
 | manuscript/manuscript.md | 14ea7e0ff0bb1ec4fe7346d96c1f3d18defde3f0b198db9bd0cb18074724146d | 53765 |
 | manuscript/manuscript_ZSS_insilico_v3.0.md | 14ea7e0ff0bb1ec4fe7346d96c1f3d18defde3f0b198db9bd0cb18074724146d | 53765 |
 | regenerate_manifest.py | f34417c51b7212dd5085135096e4e9f73ea0c4f9feb6830ffc7b9272c7ccf764 | 2077 |
-| review_round5.md | f801a2bef7210c754532056f54c93b955c04303bfb616993e079ae2952ee689d | 12437 |
+| review_round5.md | 013fa2c1077dbf78f6781f636a21c9f0d6121b200c36d5628f1f8b6b362c382f | 13059 |
 | scripts/make_fig1_v2.py | 3bb439704e9db01ae17978e8317bb2a365e7f3cdef031360529123d57518ce7d | 7184 |
 | scripts/make_figures.py | 7317b7903ae806adbc0ce3d125accdbe3be49cbf73f183229aca32dea5c2d5ef | 7917 |
+| scripts/make_graphical_abstract.py | c67a560e52775ac11d7932f806d2d2bedea4807035e787368ffb767b7850668f | 5836 |
 | scripts/md2docx.py | ed8d3b65538354d49888a1ff88cedf50f3ac631f839f753ec659d09199452e51 | 9016 |
 | scripts/verify_rg.py | 60e39f39228883f47114b213538a07632a7668ffa31cdc4aac3b2caa8bab6743 | 3753 |
 This manifest does not list itself. Verify with `sha256sum` over the rows above.
