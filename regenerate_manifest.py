@@ -29,6 +29,8 @@ def main():
         ["git", "ls-files"], cwd=HERE).decode("utf-8").splitlines()
     rows = []
     for f in sorted(files):
+        if f == "MANIFEST.md":
+            continue  # MANIFEST does not list itself (avoids self-reference)
         fp = os.path.join(HERE, f)
         if not os.path.isfile(fp):
             print("SKIP (not a file):", f, file=sys.stderr)
