@@ -10,6 +10,9 @@
 *.pdbqt
 # keep npt.gro (small post-equilibration structure, needed by verify_rg.py) and input pdbs if added later
 !analysis/md/npt.gro
+# keep the six tleap-built mutant starting coordinates (small, unsolvated complex;
+# needed by verify_mutant_topologies.py and claimed as deposited in the README)
+!analysis/scan/rep1/complex_*.gro
 
 # The four docked poses and the two source structures are small (4.6 MB total) and are
 # required to reproduce the Fig. 1 geometry, so they are tracked despite the patterns above.

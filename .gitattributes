@@ -1,0 +1,4 @@
+# Normalize all text files to LF on checkout so the MANIFEST SHA-256 values
+# are stable across machines (the repository convention is LF). Binary files
+# are detected as binary by `text=auto` and are left untouched.
+* text=auto eol=lf

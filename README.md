@@ -1,6 +1,6 @@
 # ziziphi-jujubogenin-gabaA-insilico
 
-**Reproducibility package for:** "Jujubogenin does not preferentially engage the GABA_A benzodiazepine site: an in silico study of a candidate allosteric cavity at the α1/γ2 interface" (single-author, purely computational study).
+**Reproducibility package for:** "Jujubogenin does not preferentially engage the GABA_A benzodiazepine site: an in silico study of a candidate allosteric cavity at the α1/γ2 interface (membrane-absent model)" (single-author, purely computational study).
 
 **Author:** Yongxin Yang — Department of Anesthesiology, The Second Affiliated Hospital of Fujian University of Traditional Chinese Medicine, Fuzhou, Fujian 350003, China. ORCID 0009-0004-9698-6552.
 
@@ -89,7 +89,7 @@ items are retracted; the retained-artifact status above supersedes them.
 The WT value remains window-dependent (−38.06 at 0–24.8 ns vs −32.40 at 30–50 ns, a 5.66 kcal/mol
 spread), which is disclosed in the manuscript as a limitation of single-trajectory MM-GBSA on 100
 frames. Because the reference enters every ΔΔG as an additive constant, re-referencing the scan to
-the 30–50 ns window shifts all six values by the same +5.66 kcal/mol and leaves the ranking and
+the 30–50 ns window shifts all six values by the same −5.66 kcal/mol and leaves the ranking and
 every conclusion unchanged.
 
 ## Provenance note (WT 30–50 ns MM-GBSA)
@@ -114,3 +114,8 @@ AutoDock Vina 1.2.7; GROMACS 2024.5 (GPU/CUDA); AmberTools (acpype, antechamber,
 ## License
 
 MIT (see LICENSE).
+
+## Version history
+
+- **v1.0.11** (2026-10-29): corrected the ΔΔG re-referencing sign in this README — re-referencing the alanine scan to the 30–50 ns wild-type window shifts every ΔΔG by **−5.66** kcal/mol (not +5.66); the manuscript title now carries the "(membrane-absent model)" caveat (the interface model contains no lipid bilayer); residual "hotspot" wording in §4.5 and Fig. 3 was softened to "residues" where it conflicted with the §4.5 retraction that no residue-level hotspot conclusion is defensible; and the six tleap-built mutant starting coordinates (`analysis/scan/rep1/complex_*.gro`) are now tracked and SHA-256 listed so the manifest is complete.
+- **v1.0.10** (2026-10-29): Round-4 independent expert-review revisions (Eaton 2012 wording, §4.5 residue-level hotspot retraction, JMGM formatting, Graphical Abstract).

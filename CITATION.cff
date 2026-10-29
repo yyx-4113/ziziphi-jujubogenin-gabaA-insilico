@@ -1,14 +1,14 @@
 cff-version: 1.2.0
 message: "If you use this software/analysis, please cite the associated manuscript."
-title: "Jujubogenin does not preferentially engage the GABA_A benzodiazepine site: an in silico study of a candidate allosteric cavity at the alpha1/gamma2 interface"
-abstract: "Purely computational (docking + molecular dynamics + MM-GBSA + in-silico alanine scan) study of jujubogenin binding to the human alpha1beta2gamma2 GABA_A receptor. The benzodiazepine site is not preferentially engaged; an exploratory search identifies a membrane-proximal cavity at the alpha1/gamma2 interface that is stable over 24.8 ns of explicit-solvent MD."
+title: "Jujubogenin does not preferentially engage the GABA_A benzodiazepine site: an in silico study of a candidate allosteric cavity at the alpha1/gamma2 interface (membrane-absent model)"
+abstract: "Purely computational (docking + molecular dynamics + MM-GBSA + in-silico alanine scan) study of jujubogenin binding to the human alpha1beta2gamma2 GABA_A receptor. The benzodiazepine site is not preferentially engaged; an exploratory search identifies a candidate alpha1/gamma2-interface cavity (the model contains no membrane) that is stable over 24.8 ns of explicit-solvent MD."
 authors:
   - family-names: Yang
     given-names: Yongxin
     orcid: "https://orcid.org/0009-0004-9698-6552"
     affiliation: "Department of Anesthesiology, The Second Affiliated Hospital of Fujian University of Traditional Chinese Medicine"
 license: MIT
-version: 1.0.10
+version: 1.0.11
 doi: 10.5281/zenodo.23602221
 repository-code: "https://github.com/yyx-4113/ziziphi-jujubogenin-gabaA-insilico"
 keywords:
