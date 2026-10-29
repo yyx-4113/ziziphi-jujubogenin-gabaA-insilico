@@ -192,9 +192,33 @@ be pushed. No new inconsistency was introduced.
 
 **Done locally:** v1.0.11 committed and tagged locally (`v1.0.11`, on the Round 5 release commit that also includes `review_round5.md`, the self-excluding `regenerate_manifest.py`, and the JMGM-mandatory Graphical Abstract `figures/GraphicalAbstract.png`/`.svg` with its generator `scripts/make_graphical_abstract.py`); all six verification scripts green; MANIFEST regenerated and self-consistent (every listed file's SHA-256 and byte count equals the git index blob; stable across machines via `.gitattributes` LF pinning).
 
-**Pending (environment network is currently blocked — outbound HTTPS returns timeout /
-502):** (a) `git push origin master v1.0.11` to GitHub; (b) create the Zenodo new
-version of deposit 23764756 (concept 23602221) that includes the six newly tracked
-`complex_*.gro` and the changed files, then publish and verify. Both must be re-run when
-network access is available; the local tree already contains everything the deposit
-needs.
+**External archival — DONE (2026-10-29 UTC / 2026-10-30 00:0x GMT+8).** Both steps that
+were blocked by the sandbox proxy have been completed:
+
+(a) *GitHub.* `git push origin master` and `git push origin v1.0.11` both succeeded;
+`git ls-remote` confirms `refs/heads/master` and `refs/tags/v1.0.11` both resolve to
+`a81b72017e769c95a6f8cd180d832c7e9c4f8df3`.
+
+(b) *Zenodo.* A new version of deposit 23764756 (concept 23602221) was created and
+published as **record 23771004, DOI 10.5281/zenodo.23771004**
+(<https://zenodo.org/records/23771004>), version tag `1.0.11`, carrying 18 files
+(17 volumes + `00_REASSEMBLE.txt`, 25,967,127 bytes). The archive was rebuilt with
+`make_v1011_zip.py`, which exports the tag with `git archive` instead of zipping the
+CRLF working tree — so every one of the 83 members hashes to the value listed in the
+`MANIFEST.md` shipped inside the archive (0 mismatches; the previous v1.0.10 builder
+could not make that guarantee).
+
+*Closed-loop verification* (`submission/zenodo/verify_v1011_deposit.py`): **21 PASS,
+0 FAIL** — record published with version 1.0.11 and concept DOI 23602221; all 18
+Zenodo-declared MD5s match local; all 18 files re-downloaded with matching size and
+MD5; the reassembled archive hashes to `5457bc25b62e9a95…`, identical to the local ZIP
+and to the value declared in `00_REASSEMBLE.txt`; all 83 members match their MANIFEST
+row; the six `complex_*.gro` and both Graphical Abstract files are present, with the
+PNG exactly 531 × 1328 px; the two manuscript `.md` copies are byte-identical and match
+their MANIFEST row.
+
+One correction recorded here: the manuscript hash cited in earlier notes as
+`ed70c108…` is the **CRLF working-tree** copy. The canonical value is the committed
+LF-normalised blob `14ea7e0ff0bb1ec4fe7346d96c1f3d18defde3f0b198db9bd0cb18074724146d`,
+which is what `MANIFEST.md` and the deposited archive carry. Verification expectations
+must be derived from the manifest, never hard-coded.
