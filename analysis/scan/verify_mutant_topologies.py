@@ -31,12 +31,12 @@ LIGAND = 82                  # jujubogenin, JUB_GMX.gro
 
 # name -> (substituted residue, expected atom difference WT - mutant)
 MUTANTS = {
-    "D141A": ("MET", 7),
-    "D81A": ("MET", 7),
-    "E194A": ("ARG", 14),
-    "E198A": ("LEU", 9),
-    "E202A": ("SER", 1),
-    "E29A": ("VAL", 6),
+    "M141A": ("MET", 7),
+    "M81A": ("MET", 7),
+    "R194A": ("ARG", 14),
+    "L198A": ("LEU", 9),
+    "S202A": ("SER", 1),
+    "V29A": ("VAL", 6),
 }
 
 fails = []
@@ -100,10 +100,10 @@ def main():
 
     print()
     # --- the two MET->ALA mutants must be identical in atom count -------------
-    if "D141A" in rec and "D81A" in rec:
+    if "M141A" in rec and "M81A" in rec:
         chk("both MET->ALA mutants share the same receptor count",
-            rec["D141A"][0] == rec["D81A"][0],
-            "%d vs %d" % (rec["D141A"][0], rec["D81A"][0]))
+            rec["M141A"][0] == rec["M81A"][0],
+            "%d vs %d" % (rec["M141A"][0], rec["M81A"][0]))
 
     print("\n%d checks failed" % len(fails))
     return 1 if fails else 0

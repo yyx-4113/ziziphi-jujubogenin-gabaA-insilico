@@ -6,7 +6,7 @@ WHY THIS SCRIPT EXISTS
 ----------------------
 Earlier rounds of this project recorded two quantities as "pipeline-log-only,
 not re-derivable": (i) the wild-type 30-50 ns window value (-32.40 +- 1.73) and
-(ii) the two independently seeded replica ddG values (D141A, E194A).  Both
+(ii) the two independently seeded replica ddG values (M141A, R194A).  Both
 verdicts were wrong.  The full remote working tree, including every
 gmx_MMPBSA output file, had been packed into a local tar archive on 2026-10-23
 (5.0 GB, 1022 members) that was not examined at the time.  Retrieving that
@@ -32,9 +32,9 @@ NOTE ON THE UNCERTAINTY COLUMN
 ------------------------------
 gmx_MMPBSA prints five columns for the delta block:
 Average, SD(Prop.), SD, SEM(Prop.), SEM.  The manuscript quotes the SD(Prop.)
-column (e.g. 4.29 for D141A) and propagates it; the plain "SD" column, the
+column (e.g. 4.29 for M141A) and propagates it; the plain "SD" column, the
 sample standard deviation of the 100 per-frame binding energies, is larger
-(7.03 for D141A, 6.45-12.00 across the six mutants) and is printed here as
+(7.03 for M141A, 6.45-12.00 across the six mutants) and is printed here as
 well so that a reader can see which column was used.
 
 Usage:
@@ -50,19 +50,19 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 DEFAULT = os.path.dirname(HERE)          # .../analysis
 
-MUTS = ["D141A", "D81A", "E194A", "E198A", "E202A", "E29A"]
+MUTS = ["M141A", "M81A", "R194A", "L198A", "S202A", "V29A"]
 
 # ---- values printed in the manuscript (section 4.5 and Fig. 3) --------------
 MANUSCRIPT = {
     "WT_0_24.8": (-38.06, 2.14),
     "WT_30_50": (-32.40, 1.73),
-    "rep1": {"D141A": (-24.08, 4.29), "D81A": (-12.70, 3.46),
-             "E194A": (-2.95, 2.61), "E198A": (-4.90, 9.78),
-             "E202A": (-14.82, 0.95), "E29A": (-15.41, 1.73)},
-    "rep2": {"D141A": (-10.62, 5.00), "E194A": (-24.55, 5.88)},
-    "ddG": {"D141A": 13.98, "D81A": 25.36, "E194A": 35.11,
-            "E198A": 33.16, "E202A": 23.24, "E29A": 22.65},
-    "ddG_rep2": {"D141A": 27.44, "E194A": 13.51},
+    "rep1": {"M141A": (-24.08, 4.29), "M81A": (-12.70, 3.46),
+             "R194A": (-2.95, 2.61), "L198A": (-4.90, 9.78),
+             "S202A": (-14.82, 0.95), "V29A": (-15.41, 1.73)},
+    "rep2": {"M141A": (-10.62, 5.00), "R194A": (-24.55, 5.88)},
+    "ddG": {"M141A": 13.98, "M81A": 25.36, "R194A": 35.11,
+            "L198A": 33.16, "S202A": 23.24, "V29A": 22.65},
+    "ddG_rep2": {"M141A": 27.44, "R194A": 13.51},
 }
 
 NUM = r"(-?\d+\.\d+)"
@@ -148,7 +148,7 @@ def main():
     print("%-7s %10s %10s %10s %14s %12s %14s" %
           ("mut", "dG", "SD(Prop.)", "SD", "ddG", "unc(ddG)", "ddG - ddG(rep1)"))
     rep2 = {}
-    for m in ("D141A", "E194A"):
+    for m in ("M141A", "R194A"):
         g, sdp, sd, nf, _, _ = parse(
             os.path.join(a, "scan", "rep2", "mmpbsa_%s_rep2.dat" % m))
         rep2[m] = (g, sdp, sd)

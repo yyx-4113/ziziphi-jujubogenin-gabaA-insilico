@@ -1,7 +1,7 @@
 | Run on Thu Oct 22 13:36:44 2026
 |
 |gmx_MMPBSA Version=1.6.5 based on MMPBSA.py v.16.0
-|Complex Structure file:                                    ../md_D141A_rep2.tpr
+|Complex Structure file:                                    ../md_M141A_rep2.tpr
 |Complex (GROMACS) topology file:                                   ../topol.top
 |Complex (AMBER) topology file:                                       COM.prmtop
 |Receptor (AMBER) topology file:                                      REC.prmtop

@@ -4,7 +4,7 @@
 WHY THIS SCRIPT EXISTS
 ----------------------
 The manuscript (section 4.5, Fig. 3) quotes two *independently seeded* replica
-values (D141A, E194A).  Those two numbers are recorded only in the archived
+values (M141A, R194A).  Those two numbers are recorded only in the archived
 pipeline log (analysis/scan/mut_ddg_replica_results.txt); no trajectory, no
 FINAL_RESULTS_MMPBSA output and no decomposition file was ever retrieved from
 the compute host for the rep2 runs, so they cannot be recomputed from the
@@ -55,12 +55,12 @@ ROW = re.compile(
 )
 SEC = re.compile(r"^(Complex|Receptor|Ligand|DELTAS):")
 
-MUTS = ["D141A", "D81A", "E194A", "E198A", "E202A", "E29A"]
+MUTS = ["M141A", "M81A", "R194A", "L198A", "S202A", "V29A"]
 # pipeline-log values, for cross-reference only
-LOG = {"D141A": -24.08, "D81A": -12.70, "E194A": -2.95,
-       "E198A": -4.90, "E202A": -14.82, "E29A": -15.41}
+LOG = {"M141A": -24.08, "M81A": -12.70, "R194A": -2.95,
+       "L198A": -4.90, "S202A": -14.82, "V29A": -15.41}
 # independently seeded replica (rep2) dG, pipeline log only, NOT recomputable
-REP2 = {"D141A": -10.62, "E194A": -24.55}
+REP2 = {"M141A": -10.62, "R194A": -24.55}
 WT_REF = -38.06   # 0-24.8 ns, artifact-backed (analysis/wt/mmpbsa_wt_100frames.dat)
 
 
@@ -159,7 +159,7 @@ def main():
     print("=" * 96)
     print("%-7s %11s %11s %13s %13s %10s"
           % ("mut", "rep1 dG", "rep2 dG", "replica |diff|", "half |diff|", "ratio"))
-    for m in ("D141A", "E194A"):
+    for m in ("M141A", "R194A"):
         r1 = LOG[m]
         r2 = REP2[m]
         print("%-7s %11.2f %11.2f %13.2f %13.2f %10.1f"

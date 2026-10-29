@@ -1,37 +1,37 @@
-Wed Oct 21 20:42:58 CST 2026 guard released (E29A mdrun ended or absent) -> starting replicas
+Wed Oct 21 20:42:58 CST 2026 guard released (V29A mdrun ended or absent) -> starting replicas
 ==================================================================
 REPLICA (rep2) PIPELINE START Wed Oct 21 20:42:58 CST 2026  PROD_NS=20 ns
-REPLICAS = D141A E194A   (independent seed, gen-vel=yes)
+REPLICAS = M141A R194A   (independent seed, gen-vel=yes)
 WT reference ΔG = -32.40 ± 1.73 kcal/mol
 ==================================================================
 
-################ REPLICA D141A (rep2)  Wed Oct 21 20:42:58 CST 2026 ################
-Thu Oct 22 07:34:19 CST 2026 guard released (E29A mdrun ended or absent) -> starting replicas
+################ REPLICA M141A (rep2)  Wed Oct 21 20:42:58 CST 2026 ################
+Thu Oct 22 07:34:19 CST 2026 guard released (V29A mdrun ended or absent) -> starting replicas
 ==================================================================
 REPLICA (rep2) PIPELINE START Thu Oct 22 07:34:19 CST 2026  PROD_NS=20 ns
-REPLICAS = D141A E194A   (independent seed, gen-vel=yes)
+REPLICAS = M141A R194A   (independent seed, gen-vel=yes)
 WT reference ΔG = -32.40 ± 1.73 kcal/mol
 ==================================================================
 
-################ REPLICA D141A (rep2)  Thu Oct 22 07:34:20 CST 2026 ################
-[D141A] index groups: receptor=10900 ligand=82
-[D141A] rep2 ΔG = -10.62 ± 5.00 kcal/mol ; ΔΔG = 21.78 kcal/mol (vs WT -32.40)
-[D141A] DONE -> mut_D141A_rep2_md/
+################ REPLICA M141A (rep2)  Thu Oct 22 07:34:20 CST 2026 ################
+[M141A] index groups: receptor=10900 ligand=82
+[M141A] rep2 ΔG = -10.62 ± 5.00 kcal/mol ; ΔΔG = 21.78 kcal/mol (vs WT -32.40)
+[M141A] DONE -> mut_M141A_rep2_md/
 
-################ REPLICA E194A (rep2)  Thu Oct 22 13:36:45 CST 2026 ################
-[E194A] index groups: receptor=10893 ligand=82
-[E194A] rep2 ΔG = -24.55 ± 5.88 kcal/mol ; ΔΔG = 7.85 kcal/mol (vs WT -32.40)
-[E194A] DONE -> mut_E194A_rep2_md/
+################ REPLICA R194A (rep2)  Thu Oct 22 13:36:45 CST 2026 ################
+[R194A] index groups: receptor=10893 ligand=82
+[R194A] rep2 ΔG = -24.55 ± 5.88 kcal/mol ; ΔΔG = 7.85 kcal/mol (vs WT -32.40)
+[R194A] DONE -> mut_R194A_rep2_md/
 
 ===== REPLICA SUMMARY (WT ΔG = -32.40 ± 1.73) =====
-[D141A] rep2 ΔG = -10.62 ± 5.00 kcal/mol ; ΔΔG = 21.78 kcal/mol (vs WT -32.40)
-[E194A] rep2 ΔG = -24.55 ± 5.88 kcal/mol ; ΔΔG = 7.85 kcal/mol (vs WT -32.40)
+[M141A] rep2 ΔG = -10.62 ± 5.00 kcal/mol ; ΔΔG = 21.78 kcal/mol (vs WT -32.40)
+[R194A] rep2 ΔG = -24.55 ± 5.88 kcal/mol ; ΔΔG = 7.85 kcal/mol (vs WT -32.40)
 ================ REPLICA PIPELINE COMPLETE Thu Oct 22 19:26:15 CST 2026 ================
-Thu Oct 22 19:33:14 CST 2026 guard released (E29A mdrun ended or absent) -> starting replicas
+Thu Oct 22 19:33:14 CST 2026 guard released (V29A mdrun ended or absent) -> starting replicas
 ==================================================================
 REPLICA (rep2) PIPELINE START Thu Oct 22 19:33:14 CST 2026  PROD_NS=20 ns
-REPLICAS = D141A E194A   (independent seed, gen-vel=yes)
+REPLICAS = M141A R194A   (independent seed, gen-vel=yes)
 WT reference ΔG = -32.40 ± 1.73 kcal/mol
 ==================================================================
 
-################ REPLICA D141A (rep2)  Thu Oct 22 19:33:14 CST 2026 ################
+################ REPLICA M141A (rep2)  Thu Oct 22 19:33:14 CST 2026 ################

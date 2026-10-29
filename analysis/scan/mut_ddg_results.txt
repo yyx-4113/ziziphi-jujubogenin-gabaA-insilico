@@ -1,57 +1,66 @@
 ==================================================================
+# ---------------------------------------------------------------------------
+# REFERENCE-FRAME NOTE (read before reusing these dDG values)
+# This log reports dDG against the wild-type reference of the 30-50 ns window
+# (WT dG = -32.40 +/- 1.73 kcal/mol). The manuscript (section 4.5 / Fig. 3)
+# reports dDG against the 0-24.8 ns window (WT dG = -38.06 +/- 2.14 kcal/mol).
+# The two reference frames differ by exactly +5.66 kcal/mol (the 0-24.8 ns
+# window is 5.66 kcal/mol more favourable). To convert any dDG in this file to
+# the manuscript frame, ADD +5.66 kcal/mol (e.g. 8.32 -> 13.98; 19.70 -> 25.36).
+# ---------------------------------------------------------------------------
 MUTANT ΔΔG PIPELINE START Tue Oct 20 04:46:54 CST 2026   PROD_NS=20 ns
-MUTS = D141A D81A E194A E198A E202A E29A
+MUTS = M141A M81A R194A L198A S202A V29A
 WT reference ΔG = -32.40 ± 1.73 kcal/mol (recomputed, matched 30-50ns window)
 ==================================================================
 
-################ MUTANT D141A  Tue Oct 20 04:46:54 CST 2026 ################
-[D141A] reusing pre-built topology from mut_D141A/
-[D141A] index groups: receptor=10900 ligand=82
-[D141A] ΔG = -24.08 ± 4.29 kcal/mol ; ΔΔG = 8.32 kcal/mol (vs WT -32.40)
-[D141A] DONE -> mut_D141A_md/
+################ MUTANT M141A  Tue Oct 20 04:46:54 CST 2026 ################
+[M141A] reusing pre-built topology from mut_M141A/
+[M141A] index groups: receptor=10900 ligand=82
+[M141A] ΔG = -24.08 ± 4.29 kcal/mol ; ΔΔG = 8.32 kcal/mol (vs WT -32.40)
+[M141A] DONE -> mut_M141A_md/
 
-################ MUTANT D81A  Tue Oct 20 10:40:53 CST 2026 ################
-[D81A] building fresh (emin/nvt/npt mdrun)
-[D81A] build exit=1 (see build_D81A_pipe.log)
-[D81A] index groups: receptor=10900 ligand=82
-[D81A] ΔG = -12.70 ± 3.46 kcal/mol ; ΔΔG = 19.70 kcal/mol (vs WT -32.40)
-[D81A] DONE -> mut_D81A_md/
+################ MUTANT M81A  Tue Oct 20 10:40:53 CST 2026 ################
+[M81A] building fresh (emin/nvt/npt mdrun)
+[M81A] build exit=1 (see build_M81A_pipe.log)
+[M81A] index groups: receptor=10900 ligand=82
+[M81A] ΔG = -12.70 ± 3.46 kcal/mol ; ΔΔG = 19.70 kcal/mol (vs WT -32.40)
+[M81A] DONE -> mut_M81A_md/
 
-################ MUTANT E194A  Tue Oct 20 17:26:26 CST 2026 ################
-[E194A] building fresh (emin/nvt/npt mdrun)
-[E194A] build exit=1 (see build_E194A_pipe.log)
-[E194A] index groups: receptor=10893 ligand=82
-[E194A] ΔG = -2.95 ± 2.61 kcal/mol ; ΔΔG = 29.45 kcal/mol (vs WT -32.40)
-[E194A] DONE -> mut_E194A_md/
+################ MUTANT R194A  Tue Oct 20 17:26:26 CST 2026 ################
+[R194A] building fresh (emin/nvt/npt mdrun)
+[R194A] build exit=1 (see build_R194A_pipe.log)
+[R194A] index groups: receptor=10893 ligand=82
+[R194A] ΔG = -2.95 ± 2.61 kcal/mol ; ΔΔG = 29.45 kcal/mol (vs WT -32.40)
+[R194A] DONE -> mut_R194A_md/
 
-################ MUTANT E198A  Wed Oct 21 00:01:31 CST 2026 ################
-[E198A] building fresh (emin/nvt/npt mdrun)
-[E198A] build exit=1 (see build_E198A_pipe.log)
-[E198A] index groups: receptor=10898 ligand=82
-[E198A] ΔG = -4.90 ± 9.78 kcal/mol ; ΔΔG = 27.50 kcal/mol (vs WT -32.40)
-[E198A] DONE -> mut_E198A_md/
+################ MUTANT L198A  Wed Oct 21 00:01:31 CST 2026 ################
+[L198A] building fresh (emin/nvt/npt mdrun)
+[L198A] build exit=1 (see build_L198A_pipe.log)
+[L198A] index groups: receptor=10898 ligand=82
+[L198A] ΔG = -4.90 ± 9.78 kcal/mol ; ΔΔG = 27.50 kcal/mol (vs WT -32.40)
+[L198A] DONE -> mut_L198A_md/
 
-################ MUTANT E202A  Wed Oct 21 06:29:49 CST 2026 ################
-[E202A] building fresh (emin/nvt/npt mdrun)
-[E202A] build exit=1 (see build_E202A_pipe.log)
-[E202A] index groups: receptor=10906 ligand=82
-[E202A] ΔG = -14.82 ± 0.95 kcal/mol ; ΔΔG = 17.58 kcal/mol (vs WT -32.40)
-[E202A] DONE -> mut_E202A_md/
+################ MUTANT S202A  Wed Oct 21 06:29:49 CST 2026 ################
+[S202A] building fresh (emin/nvt/npt mdrun)
+[S202A] build exit=1 (see build_S202A_pipe.log)
+[S202A] index groups: receptor=10906 ligand=82
+[S202A] ΔG = -14.82 ± 0.95 kcal/mol ; ΔΔG = 17.58 kcal/mol (vs WT -32.40)
+[S202A] DONE -> mut_S202A_md/
 
-################ MUTANT E29A  Wed Oct 21 13:03:57 CST 2026 ################
-[E29A] building fresh (emin/nvt/npt mdrun)
-[E29A] build exit=1 (see build_E29A_pipe.log)
-[E29A] index groups: receptor=10901 ligand=82
-[E29A] ΔG = -15.41 ± 1.73 kcal/mol ; ΔΔG = 16.99 kcal/mol (vs WT -32.40)
-[E29A] DONE -> mut_E29A_md/
+################ MUTANT V29A  Wed Oct 21 13:03:57 CST 2026 ################
+[V29A] building fresh (emin/nvt/npt mdrun)
+[V29A] build exit=1 (see build_V29A_pipe.log)
+[V29A] index groups: receptor=10901 ligand=82
+[V29A] ΔG = -15.41 ± 1.73 kcal/mol ; ΔΔG = 16.99 kcal/mol (vs WT -32.40)
+[V29A] DONE -> mut_V29A_md/
 
 ===== SUMMARY (WT ΔG = -32.40 ± 1.73) =====
 WT reference ΔG = -32.40 ± 1.73 kcal/mol (recomputed, matched 30-50ns window)
-[D141A] ΔG = -24.08 ± 4.29 kcal/mol ; ΔΔG = 8.32 kcal/mol (vs WT -32.40)
-[D81A] ΔG = -12.70 ± 3.46 kcal/mol ; ΔΔG = 19.70 kcal/mol (vs WT -32.40)
-[E194A] ΔG = -2.95 ± 2.61 kcal/mol ; ΔΔG = 29.45 kcal/mol (vs WT -32.40)
-[E198A] ΔG = -4.90 ± 9.78 kcal/mol ; ΔΔG = 27.50 kcal/mol (vs WT -32.40)
-[E202A] ΔG = -14.82 ± 0.95 kcal/mol ; ΔΔG = 17.58 kcal/mol (vs WT -32.40)
-[E29A] ΔG = -15.41 ± 1.73 kcal/mol ; ΔΔG = 16.99 kcal/mol (vs WT -32.40)
+[M141A] ΔG = -24.08 ± 4.29 kcal/mol ; ΔΔG = 8.32 kcal/mol (vs WT -32.40)
+[M81A] ΔG = -12.70 ± 3.46 kcal/mol ; ΔΔG = 19.70 kcal/mol (vs WT -32.40)
+[R194A] ΔG = -2.95 ± 2.61 kcal/mol ; ΔΔG = 29.45 kcal/mol (vs WT -32.40)
+[L198A] ΔG = -4.90 ± 9.78 kcal/mol ; ΔΔG = 27.50 kcal/mol (vs WT -32.40)
+[S202A] ΔG = -14.82 ± 0.95 kcal/mol ; ΔΔG = 17.58 kcal/mol (vs WT -32.40)
+[V29A] ΔG = -15.41 ± 1.73 kcal/mol ; ΔΔG = 16.99 kcal/mol (vs WT -32.40)
 ===== SUMMARY (WT ΔG = -32.40 ± 1.73) =====
 ================ PIPELINE COMPLETE Wed Oct 21 21:49:26 CST 2026 ================

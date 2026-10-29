@@ -126,15 +126,15 @@ def _read_dg(path):
     raise SystemExit("no DELTA TOTAL block in %s" % path)
 
 
-for name in ("D141A", "D81A", "E194A", "E198A", "E202A", "E29A"):
+for name in ("M141A", "M81A", "R194A", "L198A", "S202A", "V29A"):
     dg, sd = _read_dg(os.path.join(SCAN, "rep1", "mmpbsa_%s.dat" % name))
-    grp = "contact" if name in ("D141A", "E194A", "E198A", "E202A") else "control"
+    grp = "contact" if name in ("M141A", "R194A", "L198A", "S202A") else "control"
     ddg[name] = (dg - WT_REF, sd, grp)
-for name in ("D141A", "E194A"):
+for name in ("M141A", "R194A"):
     dg, sd = _read_dg(os.path.join(SCAN, "rep2", "mmpbsa_%s_rep2.dat" % name))
     rep[name] = (dg - WT_REF, float(np.sqrt(sd ** 2 + WT_SD ** 2)))
 
-order = ["D141A", "D81A", "E194A", "E198A", "E202A", "E29A"]
+order = ["M141A", "M81A", "R194A", "L198A", "S202A", "V29A"]
 labels, vals, errs, cols = [], [], [], []
 for n in order:
     v, sd, grp = ddg[n]

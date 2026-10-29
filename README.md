@@ -24,7 +24,7 @@ analysis/
                                         unsolvated complex; underpins the §4.5
                                         build-warning note),
              rep2/mmpbsa_<MUT>_rep2.dat + gmx_MMPBSA_<MUT>_rep2.log
-                                       (2 × independently seeded second replicas, D141A and E194A),
+                                       (2 × independently seeded second replicas, M141A and R194A),
              verify_all_dG_outputs.py  (recomputes EVERY ΔG and ΔΔG of §4.5 / Fig. 3 from
                                         wt/, rep1/ and rep2/ — the single entry point),
              verify_mutant_topologies.py (checks the §4.5 atom-count identity from
@@ -46,10 +46,10 @@ manuscript/  manuscript_ZSS_insilico_v3.0.md (source), manuscript.md (submission
 ## How to reproduce
 
 1. **Docking** (AutoDock Vina 1.2.7): see `analysis/docking/` logs. The BZ-corrected box is centred on [81.46, 119.93, 120.91] (20 Å); the exploratory mis-centred box is centred on [97.518, 105.844, 123.021] (22 Å).
-2. **MD** (GROMACS 2024.5, amber99sb-ildn, GAFF2/AM1-BCC ligand): `analysis/md/` holds the derived metrics; `verify_rg.py` recomputes the protein-alone radius of gyration from `npt.gro` (3.46 nm).
+2. **MD** (GROMACS 2024.5, amber99sb-ildn, GAFF2/AM1-BCC ligand): `analysis/md/` holds the derived metrics; `verify_rg.py` recomputes the protein-alone radius of gyration from `npt.gro` (3.46 nm). The 3.46 nm is the receptor's own radius of gyration, recovered from the retained post-equilibration structure `npt.gro` after minimum-image reassembly (see `scripts/verify_rg.py`); the trajectory's `rg_nm` column is solvent-inclusive (~6.6 nm) and the naive un-imaged protein Rg is ~8.1 nm, so periodic-boundary reassembly is mandatory. To recompute from the trajectory: `gmx trjconv -pbc whole -center` then `gmx gyrate` on the protein-only index group.
 3. **MM-GBSA** (gmx_MMPBSA 1.6.5, igb=5, saltcon 0.150 M, 100 frames, no entropy term) and **energy-group** interaction energies: `analysis/md/`.
 4. **Alanine scan** (six 20 ns mutant re-simulations plus two independently seeded second
-   replicas, D141A and E194A): `analysis/scan/`. Run
+   replicas, M141A and R194A): `analysis/scan/`. Run
    `python3 analysis/scan/verify_all_dG_outputs.py`, which reads the retained gmx_MMPBSA
    outputs in `analysis/wt/`, `analysis/scan/rep1/` and `analysis/scan/rep2/` and
    recomputes all nine binding free energies, all six ΔΔG values, both replica ΔΔG values
@@ -68,8 +68,8 @@ manuscript/  manuscript_ZSS_insilico_v3.0.md (source), manuscript.md (submission
 
 | Quantity | Status |
 |---|---|
-| Six mutant ΔG (D141A … E29A) | **artifact-backed** — `analysis/scan/rep1/mmpbsa_<MUT>.dat` (gmx_MMPBSA output of the 20 ns re-simulation of each mutant); independently reproducible from `analysis/scan/allmode/decomp_<MUT>.dat` (`DELTAS:` section), RMS 0.75 kcal/mol vs the pipeline log |
-| Two independently seeded replica ΔG (D141A, E194A) | **artifact-backed** — `analysis/scan/rep2/mmpbsa_<MUT>_rep2.dat`, with `gmx_MMPBSA_<MUT>_rep2.log` recording the command line, the trajectory (`md_<MUT>_rep2_img.xtc`) and the 100 processed frames |
+| Six mutant ΔG (M141A … V29A) | **artifact-backed** — `analysis/scan/rep1/mmpbsa_<MUT>.dat` (gmx_MMPBSA output of the 20 ns re-simulation of each mutant); independently reproducible from `analysis/scan/allmode/decomp_<MUT>.dat` (`DELTAS:` section), RMS 0.75 kcal/mol vs the pipeline log |
+| Two independently seeded replica ΔG (M141A, R194A) | **artifact-backed** — `analysis/scan/rep2/mmpbsa_<MUT>_rep2.dat`, with `gmx_MMPBSA_<MUT>_rep2.log` recording the command line, the trajectory (`md_<MUT>_rep2_img.xtc`) and the 100 processed frames |
 | WT ΔG −38.06 ± 2.14 (0–24.8 ns window) — the scan reference | **artifact-backed** — `analysis/wt/mmpbsa_wt_100frames.dat` and the recovered output text `analysis/wt/WT_MMGBSA_OUTPUT_0to24.8ns.txt` |
 | WT ΔG −32.40 ± 1.73 (30–50 ns window) — convergence / window-sensitivity check | **artifact-backed** — `analysis/wt/mmpbsa_wt_matched_30to50ns.dat` (gmx_MMPBSA, 100 complex frames); input trajectory and verbatim regeneration recipe retained as an independent cross-check |
 | Mutant starting coordinates (all six) | **artifact-backed** — `analysis/scan/rep1/complex_<MUT>.gro`; `verify_mutant_topologies.py` confirms complex = receptor + 82-atom ligand and WT − receptor = substitution difference (7 / 7 / 14 / 9 / 1 / 6) for every mutant |

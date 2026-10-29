@@ -34,11 +34,17 @@ Usage:
 Expected output: a table of recomputed dG (mean, SD, SEM over 100 frames) beside
 the values recorded in ../mut_ddg_results.txt, plus agreement statistics.
 
-Caveat stated in the manuscript and reproduced here: the WILD-TYPE reference
-dG = -32.40 +- 1.73 kcal/mol (30-50 ns window) is NOT re-derivable from any
-deposited file; its dedicated MM-GBSA output was never pulled back from the
-compute host and must be regenerated per ../wt/REGENERATE_WT_30to50ns.md.
-The two replica ddG values (+21.78, +7.85) are likewise log-only.
+Reproducibility of every value used by this script (verified by
+analysis/scan/verify_all_dG_outputs.py):
+  - The six mutant dG values are recomputed here from allmode/decomp_<MUT>.dat.
+  - The WILD-TYPE reference dG = -32.40 +/- 1.73 kcal/mol (30-50 ns window) IS
+    re-derivable: its gmx_MMPBSA output is deposited at
+    analysis/wt/mmpbsa_wt_matched_30to50ns.dat and is reproduced exactly by
+    verify_all_dG_outputs.py.
+  - The two replica dG values (M141A +27.44, R194A +13.51 kcal/mol) ARE deposited
+    at analysis/scan/rep2/mmpbsa_<MUT>_rep2.dat (with their gmx_MMPBSA logs) and
+    are reproduced exactly by verify_all_dG_outputs.py.
+No value used here depends on a pipeline log alone.
 """
 import math
 import os
@@ -55,12 +61,12 @@ ROW = re.compile(
 )
 SEC = re.compile(r"^(Complex|Receptor|Ligand|DELTAS):")
 
-MUTS = ["D141A", "D81A", "E194A", "E198A", "E202A", "E29A"]
+MUTS = ["M141A", "M81A", "R194A", "L198A", "S202A", "V29A"]
 # values recorded in the archived pipeline log (mut_ddg_results.txt)
-LOG = {"D141A": -24.08, "D81A": -12.70, "E194A": -2.95,
-       "E198A": -4.90, "E202A": -14.82, "E29A": -15.41}
-LOGSD = {"D141A": 4.29, "D81A": 3.46, "E194A": 2.61,
-         "E198A": 9.78, "E202A": 0.95, "E29A": 1.73}
+LOG = {"M141A": -24.08, "M81A": -12.70, "R194A": -2.95,
+       "L198A": -4.90, "S202A": -14.82, "V29A": -15.41}
+LOGSD = {"M141A": 4.29, "M81A": 3.46, "R194A": 2.61,
+         "L198A": 9.78, "S202A": 0.95, "V29A": 1.73}
 
 
 def recompute(path):
